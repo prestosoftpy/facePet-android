@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FacePet</string>
+    <string name="title_home">Comenzo</string>
+    <string name="title_dashboard">Ferramenta</string>
+    <string name="title_notifications">Notificacao</string>
+    <string name="title_account">Conta</string>
+</resources>
