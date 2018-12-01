@@ -6,12 +6,13 @@ import py.com.prestosoftware.facepet.ui.base.View;
 
 public interface LoginContract {
 
-    interface LoginPresenter extends Presenter {
+    interface LoginPresenter extends Presenter<LoginView> {
         void loginUser(Login login);
     }
 
     interface LoginView extends View {
         void goToMainActivity();
+        void gotoRegisterActivity();
     }
 
 }

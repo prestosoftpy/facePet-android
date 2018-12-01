@@ -21,13 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/imageView">
-
+       
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16dp"
             android:orientation="vertical">
-
+            
             <EditText
                 android:id="@+id/edtEmail"
                 style="@style/text_default"
@@ -93,8 +93,8 @@
 
     </ScrollView>
 
+    
 
-
-    <include  android:id="@+id/progress_dialog" layout="@layout/progress_dialog"/>
+    <include layout="@layout/progress_dialog"/>
 
 </RelativeLayout>

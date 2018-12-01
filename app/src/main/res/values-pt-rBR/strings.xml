@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_home">Comenzo</string>
+    <string name="title_home">começar</string>
     <string name="title_dashboard">Ferramenta</string>
-    <string name="title_notifications">Notificacao</string>
+    <string name="title_notifications">notificação</string>
     <string name="title_account">Conta</string>
-    <string name="lbl_login">Iniciar Sesión</string>
+    <string name="lbl_login">Iniciar sessão</string>
     <string name="message_hint_email">Digite seu Email</string>
-    <string name="show_password">Show Password</string>
-    <string name="message_hint_show_pass">Digite su clave</string>
-    <string name="txt_not_account">No posse una cuenta.?</string>
-    <string name="txt_register">Registrarse</string>
+    <string name="show_password">Mostrar</string>
+    <string name="message_hint_show_pass">Digite sua clave</string>
+    <string name="txt_not_account">Não tem uma conta?</string>
+    <string name="txt_register">Cadastre-se</string>
+    <string name="btn_txt_ingresar">Accesar</string>
 </resources>
