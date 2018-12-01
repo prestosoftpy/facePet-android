@@ -6,5 +6,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_account">Account</string>
+    <string name="lbl_login">Login</string>
+    <string name="message_hint_email">Enter your Email</string>
+    <string name="btn_txt_ingresar">INGRESAR</string>
+    <string name="show_password">Show Password</string>
+    <string name="message_hint_show_pass">Digite su clave</string>
+    <string name="txt_not_account">No posse una cuenta.?</string>
+    <string name="txt_register">Registrarse</string>
 
 </resources>

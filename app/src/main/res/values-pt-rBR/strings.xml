@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FacePet</string>
     <string name="title_home">Comenzo</string>
     <string name="title_dashboard">Ferramenta</string>
     <string name="title_notifications">Notificacao</string>
     <string name="title_account">Conta</string>
+    <string name="lbl_login">Iniciar Sesión</string>
+    <string name="message_hint_email">Digite seu Email</string>
+    <string name="show_password">Show Password</string>
+    <string name="message_hint_show_pass">Digite su clave</string>
+    <string name="txt_not_account">No posse una cuenta.?</string>
+    <string name="txt_register">Registrarse</string>
 </resources>

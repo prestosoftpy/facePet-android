@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/padding_16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.users.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="144dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/padding_16dp"
+        android:text="@string/lbl_login" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        style="@style/text_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/message_hint_email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="" tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/edtClave"
+        style="@style/text_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/message_hint_show_pass"
+        android:inputType="textPassword"
+        android:autofillHints="" tools:targetApi="o" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/show_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:text="@string/show_password" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/btn_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_txt_ingresar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/txt_not_account" />
+
+        <TextView
+            android:id="@+id/txtRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/txtCuenta"
+            android:gravity="center"
+            android:padding="@dimen/margin_8dp"
+            android:text="@string/txt_register"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/txtCuenta" />
+
+    </RelativeLayout>
+
+</LinearLayout>
