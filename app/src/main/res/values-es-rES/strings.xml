@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_home">Inicio</string>
-    <string name="title_dashboard">Dash</string>
-    <string name="title_notifications">Noticació</string>
+    <string name="title_dashboard">Herramientas</string>
+    <string name="title_notifications">Noticación</string>
     <string name="title_account">Perfil</string>
-    <string name="lbl_login">"Iniciar sessão "</string>
+    <string name="lbl_login">"Iniciar sesion "</string>
     <string name="message_hint_email">Digite su Email</string>
-    <string name="show_password">Show Password</string>
+    <string name="show_password">Mostrar Contraseña</string>
     <string name="message_hint_show_pass">Digite su clave</string>
     <string name="txt_not_account">No posse una cuenta.?</string>
     <string name="txt_register">Registrarse</string>
