@@ -22,7 +22,8 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
     }
 
     @Override
-    public void attachView(Object t) {
+    public void attachView(LoginContract.LoginView t) {
+        this.view = t;
         this.subscription = new CompositeSubscription();
     }
 
@@ -40,8 +41,8 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         token -> {
-                            view.showProgress();
-
+                            view.hideProgress();
+                            view.goToMainActivity();
                         },
                         error -> {
                             view.hideProgress();
