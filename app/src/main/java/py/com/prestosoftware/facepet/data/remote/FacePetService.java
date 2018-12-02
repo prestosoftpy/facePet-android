@@ -10,7 +10,7 @@ import rx.Observable;
 public interface FacePetService {
 
     static final String LOGIN_URL = "login";
-    static final String REGISTER_URL = "";
+    static final String REGISTER_URL = "usuarios";
 
     @POST(LOGIN_URL)
     Observable<Token> sigIn(@Body Login login);

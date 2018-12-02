@@ -10,4 +10,11 @@
     <string name="message_hint_show_pass">Digite su clave</string>
     <string name="txt_not_account">No posse una cuenta.?</string>
     <string name="txt_register">Registrarse</string>
+    <string name="btn_txt_ingresar">INGRESAR</string>
+    <string name="txt_reg_nombre">Nombre</string>
+    <string name="txt_reg_password">Contraseña</string>
+    <string name="btn_reg_Registrar">REGISTRAR</string>
+    <string name="txt_reg_phone">Telefono</string>
+    <string name="txt_reg_address">Direccion</string>
+    <string name="txt_reg_apellido">Apellido</string>
 </resources>

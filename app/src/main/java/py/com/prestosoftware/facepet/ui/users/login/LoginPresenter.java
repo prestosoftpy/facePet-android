@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.domain.interactor.UserInteractor;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -50,5 +49,10 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
                         }
                 )
         );
+    }
+
+    @Override
+    public void goToRegister() {
+        view.goToRegisterActivity();
     }
 }
