@@ -22,4 +22,7 @@ public class UserDataRepository implements UserRepository {
         return service.sigIn(login);
     }
 
+    @Override
+    public Observable<Usuario> userData(Usuario usuario){return  service.getUserData();}
+
 }

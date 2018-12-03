@@ -8,4 +8,6 @@ public interface UserRepository {
 
     Observable<Token> login(Login login);
 
+    Observable<usuarios> userData(Usuarios usuarios);
+
 }
