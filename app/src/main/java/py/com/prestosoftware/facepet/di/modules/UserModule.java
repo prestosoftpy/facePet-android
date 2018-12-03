@@ -11,6 +11,8 @@ import py.com.prestosoftware.facepet.domain.interactor.UserInteractorImpl;
 import py.com.prestosoftware.facepet.domain.repository.UserRepository;
 import py.com.prestosoftware.facepet.ui.users.login.LoginContract;
 import py.com.prestosoftware.facepet.ui.users.login.LoginPresenter;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterPresenter;
 
 @Module
 public class UserModule {
@@ -19,6 +21,12 @@ public class UserModule {
     @Singleton
     LoginContract.LoginPresenter providePresenter(UserInteractor interactor){
         return new LoginPresenter(interactor);
+    }
+
+    @Provides
+    @Singleton
+    RegisterContract.RegisterPresenter provideRegisterPresenter(UserInteractor interactor){
+        return new RegisterPresenter(interactor);
     }
 
     @Provides

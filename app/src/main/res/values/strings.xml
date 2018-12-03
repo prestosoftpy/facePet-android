@@ -8,10 +8,19 @@
     <string name="title_account">Account</string>
     <string name="lbl_login">Login</string>
     <string name="message_hint_email">Enter your Email</string>
-    <string name="btn_txt_ingresar">INGRESAR</string>
+    <string name="btn_txt_ingresar">ENTER</string>
     <string name="show_password">Show Password</string>
     <string name="message_hint_show_pass">Digite su clave</string>
     <string name="txt_not_account">No posse una cuenta.?</string>
     <string name="txt_register">Registrarse</string>
+    <string name="txt_reg_email" translatable="false">Email</string>
+    <string name="txt_reg_nombre">Name</string>
+    <string name="txt_reg_password">Password</string>
+    <string name="btn_reg_Registrar">SUBMIT</string>
+    <string name="txt_reg_facebook" translatable="false">FACEBOOK</string>
+    <string name="txt_reg_google" translatable="false">GOOGLE</string>
+    <string name="txt_reg_phone">Phone Number</string>
+    <string name="txt_reg_address">Adress</string>
+    <string name="txt_reg_apellido">Last Name</string>
 
 </resources>

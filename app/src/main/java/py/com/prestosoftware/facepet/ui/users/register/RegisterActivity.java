@@ -1,81 +1,121 @@
 package py.com.prestosoftware.facepet.ui.users.register;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
+import py.com.prestosoftware.facepet.data.model.Usuario;
+import py.com.prestosoftware.facepet.ui.main.MainActivity;
 
-public class RegisterActivity extends AppCompatActivity {
-
-    private static String APP_DIRECTORY = "FacePet";
-    private static String MEDIA_DIRECTORY = APP_DIRECTORY+"Fotos";
-
-    private final int MY_PERMISSIONS = 100;
-    private final int PHOTO_CODE = 200;
-    private final int SELECT_PICTURE = 300;
-
-    private ImageView mSetImage;
-    private FloatingActionButton mOptionButton;
-    private RelativeLayout mRlView;
-
-    private String mPath;
+public class RegisterActivity extends AppCompatActivity implements RegisterContract.RegisterView{
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
 
     @BindView(R.id.edtEmail) EditText mEdtEmail;
     @BindView(R.id.edtNombre) EditText mEdtNombre;
     @BindView(R.id.edtPassword) EditText mEdtPassword;
+    @BindView(R.id.edtApellidok) EditText mEdtApellido;
+    @BindView(R.id.edtTelefono) EditText mEdtTelefono;
+    @BindView(R.id.edtDireccion) EditText mEdtDireccion;
+    @BindView(R.id.progress_dialog) ProgressBar mProgressDialog;
+//    @BindView(R.id.imgFoto) ImageView mSetImage;
+
+    @Inject RegisterContract.RegisterPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mSetImage = (ImageView) findViewById(R.id.imgFoto);
-        mOptionButton = (FloatingActionButton) findViewById(R.id.fbtnInsImagen);
-        mRlView = (RelativeLayout) findViewById(R.id.rlView);
-
-        if(mayRequestStoragePermission())
-            mOptionButton.setEnabled(true);
-        else
-            mOptionButton.setEnabled(false);
-
-        mOptionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showOptions();
-            }
-        });
-
         ButterKnife.bind(this);
+
+        setupInjection();
     }
 
-    private boolean mayRequestStoragePermission() {
-        return false;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.attachView(this);
     }
-    private void showOptions(){
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
+    }
+
+    @Override
+    public void goToMainActivity() {
+        startActivity( new Intent(this,MainActivity.class));
+    }
+
+
+
+
+    @Override
+    public void goToProfileActivity() {
+        //startActivity( new Intent(this,ProfileActivity.class));
+    }
+
+    @Override
+    public void showProgress() {
+        mProgressDialog.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        mProgressDialog.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onEntityError(String error) {
 
     }
 
     @OnClick(R.id.btnRegistrar)
     public void registerUser(){
+
         String email = mEdtEmail.getText().toString();
         String nombre = mEdtNombre.getText().toString();
+        String apellido = mEdtApellido.getText().toString();
+        String telefono = mEdtTelefono.getText().toString();
+        String direccion = mEdtDireccion.getText().toString();
         String password = mEdtPassword.getText().toString();
 
-        if(!email.isEmpty() && !nombre.isEmpty() && !password.isEmpty()){
-            Log.d(TAG, email);
-            Log.d(TAG, nombre);
-            Log.d(TAG, password);
+        if(!email.isEmpty() && !nombre.isEmpty() && !password.isEmpty() && !apellido.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty() ){
+//            Log.d(TAG, email);
+//            Log.d(TAG, nombre);
+//            Log.d(TAG, password);
+
+            Usuario usuario = new Usuario();
+
+            usuario.setEmail(email);
+            usuario.setNombres(nombre);
+            usuario.setApellidos(apellido);
+            usuario.setCelular(telefono);
+            usuario.setDireccion(direccion);
+            usuario.setClave(password);
+
+            presenter.registerUser(usuario);
         }
     }
+
+    private void setupInjection(){
+        FacePetApplication app = (FacePetApplication) getApplication();
+        app.getGraph().inject(this);
+    }
+
+
 }
+

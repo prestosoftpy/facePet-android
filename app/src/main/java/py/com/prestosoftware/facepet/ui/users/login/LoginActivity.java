@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
@@ -21,6 +19,8 @@ import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView{
 
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @BindView(R.id.progress_dialog) ProgressBar mProgressDialog;
 
     @Inject LoginContract.LoginPresenter presenter;
+    @Inject RegisterContract.RegisterPresenter registerPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void goToRegisterActivity() {
-        //startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
     @Override
@@ -100,9 +101,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
             presenter.loginUser(login);
         }
-
-
     }
+
+    @OnClick(R.id.txtRegistro)
+    public void goToRegister(){
+        startActivity(new Intent(this,RegisterActivity.class));
+    }
+
+
 
     //@OnClick(R.id.show_password)
     @OnCheckedChanged(R.id.show_password)

@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnIrLogin)
-    public void goToLoginActivity() {
-        startActivity(new Intent(this, LoginActivity.class));
+        public void goToLoginActivity() {
+            startActivity(new Intent(this, LoginActivity.class));
     }
 
     // Local Methods
