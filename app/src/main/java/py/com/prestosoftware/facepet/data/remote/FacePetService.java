@@ -13,4 +13,9 @@ public interface FacePetService {
     @POST(LOGIN_URL)
     Observable<Token> sigIn(@Body Login login);
 
+
+
+
+
+
 }
