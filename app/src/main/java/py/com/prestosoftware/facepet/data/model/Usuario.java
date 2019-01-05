@@ -1,30 +1,39 @@
 package py.com.prestosoftware.facepet.data.model;
 
 public class Usuario {
-    private String nombres;
-    private String apellidos;
+    private String nombre;
+    private String apellido;
     private String direccion;
     private String email;
     private String clave;
     private String celular;
+    private int ciudad_id;
+
+    public int getCiudad_id() {
+        return ciudad_id;
+    }
+
+    public void setCiudad_id(int ciudad_id) {
+        this.ciudad_id = ciudad_id;
+    }
 
     public Usuario() {
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getDireccion() {

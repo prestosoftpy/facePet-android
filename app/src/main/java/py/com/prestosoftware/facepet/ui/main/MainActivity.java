@@ -7,12 +7,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
+import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.message) TextView mTextMessage;
     @BindView(R.id.navigation) BottomNavigationView navigation;
+    @BindView(R.id.btnIrLogin) Button mBtnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnIrLogin)
         public void goToLoginActivity() {
-            startActivity(new Intent(this, LoginActivity.class));
+            if(!FacePetPreference.getSesion(this)) {
+                startActivity(new Intent(this, LoginActivity.class));
+            }else{
+                //mBtnLogin.setText("Sesion Iniciada");
+                mBtnLogin.setVisibility(View.GONE);
+            }
     }
 
     // Local Methods
