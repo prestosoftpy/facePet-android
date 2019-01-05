@@ -9,15 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
+import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
@@ -30,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @BindView(R.id.edtClave) EditText mEdtClave;
     @BindView(R.id.progress_dialog) ProgressBar mProgressDialog;
 
-        @Inject LoginContract.LoginPresenter presenter;
+    @Inject LoginContract.LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @Override
     public void goToMainActivity(Token token) {
         Log.d(TAG, token.toString());
+
+        FacePetPreference.setSesion(this);
+        FacePetPreference.setToken(this, token.getToken());
+
         startActivity(new Intent(this, MainActivity.class));
     }
 
