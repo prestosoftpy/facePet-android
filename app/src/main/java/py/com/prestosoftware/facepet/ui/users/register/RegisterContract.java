@@ -12,6 +12,6 @@ public interface RegisterContract {
 
     interface RegisterView extends View{
         void goToMainActivity();
-        void goToProfileActivity();
+        //void goToProfileActivity();
     }
 }

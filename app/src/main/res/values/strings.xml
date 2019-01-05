@@ -7,12 +7,14 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_account">Account</string>
     <string name="lbl_login">Login</string>
+
     <string name="message_hint_email">Enter your Email</string>
-    <string name="btn_txt_ingresar">ENTER</string>
+    <string name="btn_txt_ingresar">Enter</string>
     <string name="show_password">Show Password</string>
-    <string name="message_hint_show_pass">Digite su clave</string>
-    <string name="txt_not_account">No posse una cuenta.?</string>
-    <string name="txt_register">Registrarse</string>
+    <string name="message_hint_show_pass">Enter your Password</string>
+    <string name="txt_not_account">Not have an account?</string>
+    <string name="txt_register">Sign up</string>
+
     <string name="txt_reg_email" translatable="false">Email</string>
     <string name="txt_reg_nombre">Name</string>
     <string name="txt_reg_password">Password</string>

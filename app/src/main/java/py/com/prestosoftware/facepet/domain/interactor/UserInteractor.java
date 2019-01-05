@@ -11,6 +11,8 @@ public interface UserInteractor {
 
     Observable<Token> registerUser(Usuario usuario);
 
+    Observable<Usuario> UserData(int usuarioid);
+
 
 
 }

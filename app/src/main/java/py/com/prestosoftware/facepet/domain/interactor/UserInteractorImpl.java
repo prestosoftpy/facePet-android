@@ -29,4 +29,11 @@ public class UserInteractorImpl implements UserInteractor {
         return repository.registerUser(usuario);
     }
 
+    @Override
+    public Observable<Usuario> UserData(int usuarioid) {
+        return repository.userData(usuarioid);
+    }
+
+
+
 }

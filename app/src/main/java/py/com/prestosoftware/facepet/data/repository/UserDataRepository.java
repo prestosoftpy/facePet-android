@@ -24,8 +24,14 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
+    public Observable<Usuario> userData(int id) {
+        return service.getUserData(id);
+    }
+
+
     public Observable<Token> registerUser(Usuario usuario) {
         return service.registerUser(usuario);
     }
+
 
 }

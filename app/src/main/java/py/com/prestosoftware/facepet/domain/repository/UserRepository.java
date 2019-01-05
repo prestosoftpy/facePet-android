@@ -9,6 +9,10 @@ public interface UserRepository {
 
     Observable<Token> login(Login login);
 
+
+    Observable<Usuario> userData(int id);
+
     Observable<Token> registerUser(Usuario usuario);
+
 
 }
