@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnIrLogin) Button mbtnIrLogin;
     @BindView(R.id.message) TextView mTextMessage;
     @BindView(R.id.navigation) BottomNavigationView navigation;
-    @BindView(R.id.btnIrLogin) Button mBtnLogin;
+    //@BindView(R.id.btnIrLogin) Button mBtnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
             }else{
                 //mBtnLogin.setText("Sesion Iniciada");
-                mBtnLogin.setVisibility(View.GONE);//para ocultar el boton cuando la sesion este inciada
+                mbtnIrLogin.setVisibility(View.GONE);//para ocultar el boton cuando la sesion este inciada
             }
 
     }

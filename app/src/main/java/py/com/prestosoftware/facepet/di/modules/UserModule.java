@@ -28,7 +28,6 @@ public class UserModule {
 
     @Provides
     @Singleton
-
     RegisterContract.RegisterPresenter provideRegisterPresenter(UserInteractor interactor){
         return new RegisterPresenter(interactor);
     }
