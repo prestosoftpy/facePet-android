@@ -7,13 +7,15 @@ public class Usuario {
     private String email;
     private String clave;
     private String celular;
-    private String  ciudad_id;
 
-    public String getCiudad_id() {
+    private int ciudad_id;
+
+    public int getCiudad_id() {
         return ciudad_id;
     }
 
-    public void setCiudad_id(String ciudad_id) {
+    public void setCiudad_id(int ciudad_id) {
+
         this.ciudad_id = ciudad_id;
     }
 

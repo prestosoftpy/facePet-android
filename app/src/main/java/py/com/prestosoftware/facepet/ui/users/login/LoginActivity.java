@@ -18,11 +18,10 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
+import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
-import py.com.prestosoftware.facepet.data.model.local.FacePetPreference;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
-import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 
@@ -63,11 +62,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void goToMainActivity(Token token) {
-        Log.d(TAG,token.toString());
 
         FacePetPreference.setSesion(this);
-        FacePetPreference.settoken(this,token.getToken());
-
+        FacePetPreference.setToken(this,token.getToken());
         startActivity(new Intent(this, MainActivity.class));
 
     }

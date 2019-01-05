@@ -40,38 +40,35 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
                 interactor.loginUser(login)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+
+//                .subscribe(
+//                        token -> {
+//                            view.hideProgress();
+//                            view.goToMainActivity(token);
+//                        },
+//                        error -> {
+//                            view.hideProgress();
+//                            view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
+//                        }
+//                )
                 .subscribe(new Subscriber<Token>() {
-                               @Override
-                               public void onCompleted() {
-                                   view.hideProgress();
-                               }
+                    @Override
+                    public void onCompleted() {
+                        view.hideProgress();
+                    }
 
-                               @Override
-                               public void onError(Throwable e) {
-                                   view.hideProgress();
-                                   view.onEntityError(e.getLocalizedMessage()); //CAMBIAR EN PROD
-                               }
+                    @Override
+                    public void onError(Throwable e) {
+                        view.hideProgress();
+                        view.onEntityError(e.getLocalizedMessage()); //CAMBIAR EN PROD
+                    }
 
-                               @Override
-                               public void onNext(Token token) {
-                                   view.goToMainActivity(token);
-                               }
-                           }
-
-                            //otra forma de hacer lo mismo que esta en new Subscribe
-                             /*   token -> {
-                            view.hideProgress();
-                            view.goToMainActivity(token);
-
-                             },
-                            error -> {
-                            view.hideProgress();
-                            view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
-                            }
-                            */
-                     )
-
-                );
+                    @Override
+                    public void onNext(Token token) {
+                        view.goToMainActivity(token);
+                    }
+                })
+        );
     }
 
     @Override

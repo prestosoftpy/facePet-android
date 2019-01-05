@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @BindView(R.id.edtPassword) EditText mEdtPassword;
     @BindView(R.id.edtApellidok) EditText mEdtApellido;
     @BindView(R.id.edtTelefono) EditText mEdtTelefono;
+    @BindView(R.id.edtCiudadId) EditText mEdtCiudadId;
     @BindView(R.id.edtDireccion) EditText mEdtDireccion;
     @BindView(R.id.progress_dialog) ProgressBar mProgressDialog;
 //    @BindView(R.id.imgFoto) ImageView mSetImage;
@@ -93,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         String telefono = mEdtTelefono.getText().toString();
         String direccion = mEdtDireccion.getText().toString();
         String password = mEdtPassword.getText().toString();
+        int ciudad_id = Integer.valueOf(mEdtCiudadId.getText().toString());
 
         if(!email.isEmpty() && !nombre.isEmpty() && !password.isEmpty() && !apellido.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty() ){
 //            Log.d(TAG, email);
@@ -105,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setCelular(telefono);
+            usuario.setCiudad_id(ciudad_id);
             usuario.setDireccion(direccion);
             usuario.setClave(password);
 

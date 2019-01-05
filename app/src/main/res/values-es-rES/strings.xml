@@ -18,4 +18,5 @@
     <string name="txt_reg_phone">Telefono</string>
     <string name="txt_reg_address">Direccion</string>
     <string name="txt_reg_apellido">Apellido</string>
+    <string name="city_id">Id Ciudad</string>
 </resources>

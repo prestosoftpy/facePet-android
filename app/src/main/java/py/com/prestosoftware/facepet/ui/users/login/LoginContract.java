@@ -14,11 +14,7 @@ public interface LoginContract {
 
     interface LoginView extends View {
         void goToMainActivity(Token token);
-
         void goToRegisterActivity();
-
-       // void goToPerfilActivity();
-
-}
+    }
 
 }
