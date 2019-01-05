@@ -85,12 +85,21 @@
                 android:autofillHints="" tools:targetApi="o" />
 
             <EditText
-                android:id="@+id/edtTelefono"
+            android:id="@+id/edtTelefono"
+            style="@style/text_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_reg_phone"
+            android:inputType="phone"
+            android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtCiudadId"
                 style="@style/text_default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/txt_reg_phone"
-                android:inputType="phone"
+                android:hint="@string/city_id"
+                android:inputType="number"
                 android:autofillHints="" tools:targetApi="o" />
 
             <EditText

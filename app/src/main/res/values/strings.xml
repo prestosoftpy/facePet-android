@@ -22,5 +22,6 @@
     <string name="txt_reg_phone">Phone Number</string>
     <string name="txt_reg_address">Adress</string>
     <string name="txt_reg_apellido">Last Name</string>
+    <string name="city_id">City Id</string>
 
 </resources>

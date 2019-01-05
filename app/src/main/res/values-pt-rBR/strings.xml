@@ -17,4 +17,5 @@
     <string name="txt_reg_phone">Fone</string>
     <string name="txt_reg_address">Endereco</string>
     <string name="txt_reg_apellido">Sobre-Nome</string>
+    <string name="city_id">Id Cidade</string>
 </resources>
