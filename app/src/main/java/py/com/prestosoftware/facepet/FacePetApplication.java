@@ -18,21 +18,24 @@ public class FacePetApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initDependencyGraph();
+
         // crashlitycs - > Twitter Crashlitycs
         // firebase Cloud Messaging -> FCM
         // Base de Datos Local -> Realm.io
     }
 
-    private void initDependencyGraph(){
+
+    private void initDependencyGraph() {
         graph = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .networkModule(new NetworkModule())
                 .userModule(new UserModule())
                 .build();
         graph.inject(this);
-    }
 
-    public ApplicationComponent getGraph() {
-        return graph;
     }
+        public ApplicationComponent getGraph () {
+            return graph;
+        }
+
 }

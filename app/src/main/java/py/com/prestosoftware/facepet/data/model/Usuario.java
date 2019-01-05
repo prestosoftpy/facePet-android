@@ -7,6 +7,7 @@ public class Usuario {
     private String email;
     private String clave;
     private String celular;
+
     private int ciudad_id;
 
     public int getCiudad_id() {
@@ -14,6 +15,7 @@ public class Usuario {
     }
 
     public void setCiudad_id(int ciudad_id) {
+
         this.ciudad_id = ciudad_id;
     }
 
@@ -35,6 +37,8 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+
 
     public String getDireccion() {
         return direccion;
@@ -66,5 +70,18 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", email='" + email + '\'' +
+                ", clave='" + clave + '\'' +
+                ", celular='" + celular + '\'' +
+                ", ciudad_id=" + ciudad_id +
+                '}';
     }
 }

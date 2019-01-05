@@ -10,19 +10,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
-import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
+import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
+    @BindView(R.id.btnIrLogin) Button mbtnIrLogin;
     @BindView(R.id.message) TextView mTextMessage;
     @BindView(R.id.navigation) BottomNavigationView navigation;
     @BindView(R.id.btnIrLogin) Button mBtnLogin;
@@ -59,13 +59,21 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnIrLogin)
         public void goToLoginActivity() {
+
             if(!FacePetPreference.getSesion(this)) {
                 startActivity(new Intent(this, LoginActivity.class));
             }else{
                 //mBtnLogin.setText("Sesion Iniciada");
-                mBtnLogin.setVisibility(View.GONE);
+                mBtnLogin.setVisibility(View.GONE);//para ocultar el boton cuando la sesion este inciada
             }
+
     }
+
+    @OnClick(R.id.btnIrPerfil)
+    public void gotoProfileActivity(){
+        startActivity(new Intent(this,ProfileActivity.class));
+    }
+
 
     // Local Methods
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

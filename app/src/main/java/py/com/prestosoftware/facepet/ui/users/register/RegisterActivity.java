@@ -17,6 +17,7 @@ import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Usuario;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
+import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.RegisterView{
 
@@ -64,10 +65,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
 
 
-    @Override
-    public void goToProfileActivity() {
-        //startActivity( new Intent(this,ProfileActivity.class));
-    }
+    //@Override
+    //public void goToProfileActivity() {
+      //  startActivity( new Intent(this,ProfileActivity.class));
+    //}
 
     @Override
     public void showProgress() {
