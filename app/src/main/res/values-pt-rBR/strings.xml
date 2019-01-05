@@ -11,4 +11,11 @@
     <string name="txt_not_account">Não tem uma conta?</string>
     <string name="txt_register">Cadastre-se</string>
     <string name="btn_txt_ingresar">Accesar</string>
+
+    <string name="txt_reg_nombre">Nome</string>
+    <string name="txt_reg_password">Senha</string>
+    <string name="btn_reg_Registrar">REGISTRAR</string>
+    <string name="txt_reg_phone">Fone</string>
+    <string name="txt_reg_address">Endereco</string>
+    <string name="txt_reg_apellido">Sobre-Nome</string>
 </resources>

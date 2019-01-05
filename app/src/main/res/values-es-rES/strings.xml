@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_home">Inicio</string>
+
     <string name="title_dashboard">Tablero</string>
     <string name="title_notifications">Notificación</string>
     <string name="title_account">Perfil</string>
@@ -11,4 +12,10 @@
     <string name="txt_not_account">No posee una cuenta.?</string>
     <string name="txt_register">Registrarse</string>
     <string name="btn_txt_ingresar">Ingresar</string>
+    <string name="txt_reg_nombre">Nombre</string>
+    <string name="txt_reg_password">Contraseña</string>
+    <string name="btn_reg_Registrar">REGISTRAR</string>
+    <string name="txt_reg_phone">Telefono</string>
+    <string name="txt_reg_address">Direccion</string>
+    <string name="txt_reg_apellido">Apellido</string>
 </resources>

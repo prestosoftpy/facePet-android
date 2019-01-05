@@ -3,8 +3,9 @@ package py.com.prestosoftware.facepet.ui.users.login;
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Login;
+import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.domain.interactor.UserInteractor;
-import rx.Scheduler;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -39,17 +40,43 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
                 interactor.loginUser(login)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        token -> {
-                            view.hideProgress();
-                            view.goToMainActivity();
+                .subscribe(new Subscriber<Token>() {
+                               @Override
+                               public void onCompleted() {
+                                   view.hideProgress();
+                               }
 
-                        },
-                        error -> {
+                               @Override
+                               public void onError(Throwable e) {
+                                   view.hideProgress();
+                                   view.onEntityError(e.getLocalizedMessage()); //CAMBIAR EN PROD
+                               }
+
+                               @Override
+                               public void onNext(Token token) {
+                                   view.goToMainActivity(token);
+                               }
+                           }
+
+                            //otra forma de hacer lo mismo que esta en new Subscribe
+                             /*   token -> {
+                            view.hideProgress();
+                            view.goToMainActivity(token);
+
+                             },
+                            error -> {
                             view.hideProgress();
                             view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
-                        }
-                )
-        );
+                            }
+                            */
+                     )
+
+                );
     }
+
+    @Override
+    public void goToRegister() {
+        view.goToRegisterActivity();
+    }
+
 }

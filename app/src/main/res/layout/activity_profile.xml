@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.profile.activity_profile"
+    tools:context=".ui.users.profile.ProfileActivity"
     android:orientation="vertical"
     >
 
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text="Email" />
     <TextView
         android:id="@+id/txt2"
@@ -101,26 +101,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Ciudad" />
+        android:inputType="number" />
+
     <TextView
         android:id="@+id/txt4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginLeft="@dimen/margin_8dp"
-        android:text="Direccion"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary"
+        android:text="Direccion"/>
 
     <TextView
         android:id="@+id/txtDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Direccion" />
+        android:inputType="text"/>
 
 
     <LinearLayout
@@ -147,5 +144,9 @@
             android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/progress_dialogProfile"
+        layout="@layout/progress_dialog"/>
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
+import py.com.prestosoftware.facepet.data.model.Usuario;
 import py.com.prestosoftware.facepet.data.remote.FacePetService;
 import py.com.prestosoftware.facepet.domain.repository.UserRepository;
 import rx.Observable;
@@ -23,6 +24,14 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public Observable<Usuario> userData(Usuario usuario){return  service.getUserData();}
+    public Observable<Usuario> userData(int id) {
+        return service.getUserData(id);
+    }
+
+
+    public Observable<Token> registerUser(Usuario usuario) {
+        return service.registerUser(usuario);
+    }
+
 
 }
