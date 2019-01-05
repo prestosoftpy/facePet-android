@@ -2,7 +2,6 @@ package py.com.prestosoftware.facepet.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import py.com.prestosoftware.facepet.helpers.Util;
 
 public class FacePetPreference {
@@ -18,11 +17,11 @@ public class FacePetPreference {
     }
 
     public static void setSesion(final Context context) {
-        preferences(context).edit().putBoolean(Util.SESION_USER, true).apply();
+        preferences(context).edit().putBoolean(Util.SESSION_USER, true).apply();
     }
 
     public static Boolean getSesion(final Context context) {
-        return preferences(context).getBoolean(Util.SESION_USER, false);
+        return preferences(context).getBoolean(Util.SESSION_USER, false);
     }
 
     public static void setToken(final Context context, String token) {
@@ -32,6 +31,5 @@ public class FacePetPreference {
     public static String getToken(final Context context) {
         return preferences(context).getString(Util.TOKEN, "");
     }
-
 
 }

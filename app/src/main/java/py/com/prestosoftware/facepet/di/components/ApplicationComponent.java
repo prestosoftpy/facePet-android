@@ -8,6 +8,8 @@ import py.com.prestosoftware.facepet.di.modules.ApplicationModule;
 import py.com.prestosoftware.facepet.di.modules.NetworkModule;
 import py.com.prestosoftware.facepet.di.modules.UserModule;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
+import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
 
 @Singleton
 @Component(
@@ -22,5 +24,9 @@ public interface ApplicationComponent {
     void inject(FacePetApplication facePetApplication);
 
     void inject(LoginActivity loginActivity);
+
+    void inject(RegisterActivity registerActivity);
+
+    void inject(ProfileActivity profileActivity);
 
 }

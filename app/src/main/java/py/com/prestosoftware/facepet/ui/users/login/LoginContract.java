@@ -9,11 +9,12 @@ public interface LoginContract {
 
     interface LoginPresenter extends Presenter<LoginView> {
         void loginUser(Login login);
+        void goToRegister();
     }
 
     interface LoginView extends View {
         void goToMainActivity(Token token);
-        void gotToRegisterActivity();
+        void goToRegisterActivity();
     }
 
 }

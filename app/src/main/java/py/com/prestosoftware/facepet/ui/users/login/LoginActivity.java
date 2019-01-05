@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import javax.inject.Inject;
+import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
@@ -20,6 +21,8 @@ import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
+import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
 
@@ -31,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Inject LoginContract.LoginPresenter presenter;
 
+    @Inject RegisterContract.RegisterPresenter registerPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
         //Binding de los componentes de la UI
         ButterKnife.bind(this);
-
         setupInjection();
     }
 
@@ -52,31 +56,38 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     protected void onDestroy() {
         super.onDestroy();
         presenter.detachView();
+
     }
 
     @Override
     public void goToMainActivity(Token token) {
-        Log.d(TAG, token.toString());
-
         FacePetPreference.setSesion(this);
-        FacePetPreference.setToken(this, token.getToken());
-
+        FacePetPreference.setToken(this,token.getToken());
         startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
-    public void gotToRegisterActivity() {
-        //startActivity(new Intent(this, RegisterUserActivity.class));
+    public void goToRegisterActivity() {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
+
+    /*@Override
+    public void goToPerfilActivity() {
+        startActivity(new Intent(this,ProfileActivity.class));}
+*/
+
+
 
     @Override
     public void showProgress() {
-        mProgressDialog.setVisibility(View.VISIBLE);
+        mProgressDialog.setVisibility(android.view.View.VISIBLE);
+
     }
 
     @Override
     public void hideProgress() {
-        mProgressDialog.setVisibility(View.GONE);
+        mProgressDialog.setVisibility(android.view.View.GONE);
+
     }
 
     @Override
@@ -91,18 +102,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         String clave = mEdtClave.getText().toString();
 
         if (!email.isEmpty() && !clave.isEmpty()) {
-            //Log.d(TAG, email);
-            //Log.d(TAG, clave);
 
             Login login = new Login();
             login.setEmail(email);
             login.setClave(clave);
-
             presenter.loginUser(login);
         }
     }
 
-    //@OnClick(R.id.show_password)
+    @OnClick(R.id.txtRegistro)
+    public void goToRegister(){
+        startActivity(new Intent(this,RegisterActivity.class));
+    }
+
     @OnCheckedChanged(R.id.show_password)
     public void showPassword(boolean checked) {
          mEdtClave.setTransformationMethod(checked ?

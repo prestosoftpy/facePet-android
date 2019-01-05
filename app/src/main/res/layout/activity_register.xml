@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="@dimen/margin_16dp"
+    tools:context=".ui.users.register.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imgFoto"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:contentDescription="@string/app_name" />
+
+    <ScrollView
+        android:id="@+id/register-form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgFoto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btnFacebook"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding_16dp"
+                    android:background="@android:color/holo_blue_dark"
+                    android:text="@string/txt_reg_facebook"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btnGoogle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_red_dark"
+                    android:gravity="center"
+                    android:text="@string/txt_reg_google"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:padding="@dimen/padding_16dp"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edtEmail"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_reg_email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtNombre"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_reg_nombre"
+                android:inputType="textPersonName"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtApellidok"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_reg_apellido"
+                android:inputType="textPersonName"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+            android:id="@+id/edtTelefono"
+            style="@style/text_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_reg_phone"
+            android:inputType="phone"
+            android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtCiudadId"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/city_id"
+                android:inputType="number"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtDireccion"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_reg_address"
+                android:inputType="textPersonName"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                style="@style/text_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_reg_password"
+                android:inputType="textPassword"
+                android:autofillHints="" tools:targetApi="o" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/btn_reg_Registrar"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <include
+        android:id="@+id/progress_dialog"
+        layout="@layout/progress_dialog"/>
+
+
+
+
+</RelativeLayout>

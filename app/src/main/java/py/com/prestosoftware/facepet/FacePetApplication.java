@@ -1,7 +1,6 @@
 package py.com.prestosoftware.facepet;
 
 import android.app.Application;
-
 import py.com.prestosoftware.facepet.di.components.ApplicationComponent;
 import py.com.prestosoftware.facepet.di.components.DaggerApplicationComponent;
 import py.com.prestosoftware.facepet.di.modules.ApplicationModule;
@@ -36,4 +35,5 @@ public class FacePetApplication extends Application {
     public ApplicationComponent getGraph() {
         return graph;
     }
+
 }

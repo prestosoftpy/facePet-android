@@ -10,21 +10,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
+import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
+    @BindView(R.id.btnIrLogin) Button mbtnIrLogin;
     @BindView(R.id.message) TextView mTextMessage;
     @BindView(R.id.navigation) BottomNavigationView navigation;
-    @BindView(R.id.btnIrLogin) Button mBtnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
             //mBtnLogin.setText("Iniciado Sesión");
-            mBtnLogin.setVisibility(View.GONE);
+            mbtnIrLogin.setVisibility(View.GONE);
         }
     }
+
+    @OnClick(R.id.btnIrPerfil)
+    public void gotoProfileActivity(){
+        startActivity(new Intent(this,ProfileActivity.class));
+    }
+
 
     // Local Methods
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

@@ -90,6 +90,6 @@
 
     </ScrollView>
 
-    <include android:id="@+id/progress_dialog" layout="@layout/progress_dialog"/>
+    <include  android:id="@+id/progress_dialog" layout="@layout/progress_dialog"/>
 
 </RelativeLayout>
