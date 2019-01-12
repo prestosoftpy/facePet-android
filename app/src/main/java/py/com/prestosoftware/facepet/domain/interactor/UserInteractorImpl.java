@@ -11,9 +11,9 @@ import rx.Observable;
 public class UserInteractorImpl implements UserInteractor {
 
 
-    private UserRepository repository;
+    @Inject UserRepository repository;
 
-    @Inject
+
     public UserInteractorImpl(UserRepository repository) {
         this.repository = repository;
     }

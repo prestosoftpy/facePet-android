@@ -8,11 +8,8 @@ import py.com.prestosoftware.facepet.di.modules.ApplicationModule;
 import py.com.prestosoftware.facepet.di.modules.NetworkModule;
 import py.com.prestosoftware.facepet.di.modules.UserModule;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
-//<<<<<<< HEAD
-//=======
 import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
-
 
 @Singleton
 @Component(
@@ -22,17 +19,14 @@ import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
                 UserModule.class
         }
 )
+public interface ApplicationComponent {
 
+    void inject(FacePetApplication facePetApplication);
 
+    void inject(LoginActivity loginActivity);
 
-    public interface ApplicationComponent {
+    void inject(RegisterActivity registerActivity);
 
-        void inject(FacePetApplication facePetApplication);
+    void inject(ProfileActivity profileActivity);
 
-        void inject(LoginActivity loginActivity);
-
-        void inject(RegisterActivity registerActivity);
-
-        void inject(ProfileActivity profileActivity);
-
-    }
+}

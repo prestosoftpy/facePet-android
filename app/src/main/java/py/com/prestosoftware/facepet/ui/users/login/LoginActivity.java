@@ -9,9 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import javax.inject.Inject;
-
+import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
@@ -37,14 +36,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Inject RegisterContract.RegisterPresenter registerPresenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         //Binding de los componentes de la UI
         ButterKnife.bind(this);
-        setupinjection();
+        setupInjection();
     }
 
     @Override
@@ -62,11 +61,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void goToMainActivity(Token token) {
-
         FacePetPreference.setSesion(this);
         FacePetPreference.setToken(this,token.getToken());
         startActivity(new Intent(this, MainActivity.class));
-
     }
 
     @Override
@@ -99,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     }
 
     //Local Methods
-
     @OnClick(R.id.btnLogin)
     public void loginUser() {
         String email = mEdtEmail.getText().toString();
@@ -107,51 +103,28 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
         if (!email.isEmpty() && !clave.isEmpty()) {
 
-
-
-           // Log.d(TAG, email);
-            //Log.d(TAG, clave);
-
             Login login = new Login();
             login.setEmail(email);
             login.setClave(clave);
             presenter.loginUser(login);
         }
-
-
-
     }
-    /*public void goToProfileActivity() {
-        startActivity( new Intent(this,ProfileActivity.class));
-    }
-*/
-//
 
     @OnClick(R.id.txtRegistro)
     public void goToRegister(){
         startActivity(new Intent(this,RegisterActivity.class));
     }
 
-
-
-
-
-
-
-    //@OnClick(R.id.show_password)
     @OnCheckedChanged(R.id.show_password)
     public void showPassword(boolean checked) {
          mEdtClave.setTransformationMethod(checked ?
                  HideReturnsTransformationMethod.getInstance() :
                  PasswordTransformationMethod.getInstance());
-
     }
 
-
-    private void setupinjection() {
+    private void setupInjection() {
         FacePetApplication app = (FacePetApplication) getApplication();
         app.getGraph().inject(this);
-
-
     }
+
 }
