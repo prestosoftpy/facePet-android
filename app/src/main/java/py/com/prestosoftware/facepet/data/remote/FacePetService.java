@@ -19,12 +19,14 @@ public interface FacePetService {
     @POST(LOGIN_URL)
     Observable<Token> sigIn(@Body Login login);
 
+
     @GET(User_url)
     Observable<Usuario> getUserData(@Path("id") int usuarioid);
 
 
     @POST(REGISTER_URL)
     Observable<Token> registerUser(@Body Usuario usuario);
+
 
 
 }
