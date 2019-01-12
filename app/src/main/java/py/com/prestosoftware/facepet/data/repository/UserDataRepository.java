@@ -11,7 +11,7 @@ import rx.Observable;
 
 public class UserDataRepository implements UserRepository {
 
-    @Inject FacePetService service;
+    private FacePetService service;
 
     @Inject
     public UserDataRepository(FacePetService service) {

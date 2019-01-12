@@ -1,32 +1,35 @@
 package py.com.prestosoftware.facepet.di.modules;
 
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import py.com.prestosoftware.facepet.data.remote.FacePetService;
 import py.com.prestosoftware.facepet.data.repository.UserDataRepository;
-import py.com.prestosoftware.facepet.ui.users.login.LoginContract;
-import py.com.prestosoftware.facepet.ui.users.login.LoginPresenter;
 import py.com.prestosoftware.facepet.domain.interactor.UserInteractor;
 import py.com.prestosoftware.facepet.domain.interactor.UserInteractorImpl;
 import py.com.prestosoftware.facepet.domain.repository.UserRepository;
+import py.com.prestosoftware.facepet.ui.users.login.LoginContract;
+import py.com.prestosoftware.facepet.ui.users.login.LoginPresenter;
 import py.com.prestosoftware.facepet.ui.users.profile.ProfileContract;
 import py.com.prestosoftware.facepet.ui.users.profile.ProfilePresenter;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterPresenter;
+
 
 @Module
 public class UserModule {
 
     @Provides
     @Singleton
-    LoginContract.LoginPresenter providePresenter(UserInteractor interactor) {
+    LoginContract.LoginPresenter providePresenter(UserInteractor interactor){
         return new LoginPresenter(interactor);
     }
 
     @Provides
     @Singleton
-    RegisterContract.RegisterPresenter provideRegisterPresenter(UserInteractor interactor) {
+
+    RegisterContract.RegisterPresenter provideRegisterPresenter(UserInteractor interactor){
         return new RegisterPresenter(interactor);
     }
 

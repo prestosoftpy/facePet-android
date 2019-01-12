@@ -1,6 +1,7 @@
 package py.com.prestosoftware.facepet;
 
 import android.app.Application;
+
 import py.com.prestosoftware.facepet.di.components.ApplicationComponent;
 import py.com.prestosoftware.facepet.di.components.DaggerApplicationComponent;
 import py.com.prestosoftware.facepet.di.modules.ApplicationModule;
@@ -17,10 +18,12 @@ public class FacePetApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initDependencyGraph();
+
         // crashlitycs - > Twitter Crashlitycs
         // firebase Cloud Messaging -> FCM
         // Base de Datos Local -> Realm.io
     }
+
 
     private void initDependencyGraph() {
         graph = DaggerApplicationComponent.builder()
@@ -28,12 +31,11 @@ public class FacePetApplication extends Application {
                 .networkModule(new NetworkModule())
                 .userModule(new UserModule())
                 .build();
-
         graph.inject(this);
-    }
 
-    public ApplicationComponent getGraph() {
-        return graph;
     }
+        public ApplicationComponent getGraph () {
+            return graph;
+        }
 
 }
