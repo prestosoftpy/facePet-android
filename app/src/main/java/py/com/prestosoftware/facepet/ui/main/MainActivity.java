@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity  {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         android.support.v4.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_container, showHomeView());
+        transaction.replace(R.id.main_container, showHomeView());//para que inicie con la pantalla que le das , showomeview para este
         transaction.commit();
 
         /*android.support.v4.app.FragmentTransaction transactionCity= getSupportFragmentManager().beginTransaction();

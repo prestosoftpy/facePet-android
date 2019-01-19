@@ -42,7 +42,7 @@ public class PetShopFragment extends Fragment implements PetShopContract.PetShop
     }
 
     public static PetShopFragment newInstance() {
-        if (fragment == null) {
+        if (fragment == null) {// para que no instancie cada vez que se carga la pantalla
             fragment = new PetShopFragment();
         }
         return fragment;
