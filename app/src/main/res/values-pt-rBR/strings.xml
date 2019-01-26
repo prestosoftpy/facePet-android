@@ -19,4 +19,11 @@
     <string name="txt_reg_address">Endereco</string>
     <string name="txt_reg_apellido">Sobre-Nome</string>
     <string name="city_id">Id Cidade</string>
+    <string name="usuario">Usuario</string>
+    <string name="fecha">Data</string>
+    <string name="descripcion">Descricao</string>
+    <string name="adoptar">ADOTAR</string>
+    <string name="ayudar">AJUDAR</string>
+    <string name="facepets" translatable="false">Facepets</string>
+    <string name="facepet">Facepet</string>
 </resources>

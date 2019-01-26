@@ -19,4 +19,11 @@
     <string name="txt_reg_address">Direccion</string>
     <string name="txt_reg_apellido">Apellido</string>
     <string name="city_id">Id Ciudad</string>
+    <string name="usuario">Usuario</string>
+    <string name="fecha">Fecha</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="adoptar">ADOPTAR</string>
+    <string name="ayudar">AYUDAR</string>
+    <string name="facepets" translatable="false">Facepets</string>
+    <string name="facepet">Facepet</string>
 </resources>

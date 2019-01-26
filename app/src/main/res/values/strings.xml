@@ -25,5 +25,12 @@
     <string name="txt_reg_address">Adress</string>
     <string name="txt_reg_apellido">Last Name</string>
     <string name="city_id">City Id</string>
+    <string name="login_ui" translatable="false">Login UI</string>
+    <string name="usuario">User</string>
+    <string name="facepets">Facepets</string>
+    <string name="fecha">Date</string>
+    <string name="descripcion">Description</string>
+    <string name="adoptar">ADOPT</string>
+    <string name="ayudar">HELP</string>
 
 </resources>

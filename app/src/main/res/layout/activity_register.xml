@@ -75,14 +75,14 @@
                 android:inputType="textPersonName"
                 android:autofillHints="" tools:targetApi="o" />
 
-            <EditText
-                android:id="@+id/edtApellidok"
-                style="@style/text_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/txt_reg_apellido"
-                android:inputType="textPersonName"
-                android:autofillHints="" tools:targetApi="o" />
+            <!--<EditText-->
+                <!--android:id="@+id/edtApellidok"-->
+                <!--style="@style/text_default"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="@string/txt_reg_apellido"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:autofillHints="" tools:targetApi="o" />-->
 
             <EditText
             android:id="@+id/edtTelefono"

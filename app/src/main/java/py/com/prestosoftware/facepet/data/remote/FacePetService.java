@@ -1,5 +1,9 @@
 package py.com.prestosoftware.facepet.data.remote;
 
+import java.util.List;
+
+import py.com.prestosoftware.facepet.data.model.Empresa;
+import py.com.prestosoftware.facepet.data.model.Eventos;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.data.model.Usuario;
@@ -11,10 +15,11 @@ import rx.Observable;
 
 public interface FacePetService {
 
-    static final String LOGIN_URL = "login";
-    static final String REGISTER_URL = "usuarios";
-
-    static final String User_url="usuarios/{id}";
+    String LOGIN_URL = "login";
+    String REGISTER_URL = "usuarios";
+    String User_url="usuarios/{id}";
+    String GET_EMPRESAS_URL = "empresas";
+    String GET_EVENTOS_URL = "eventos";
 
     @POST(LOGIN_URL)
     Observable<Token> sigIn(@Body Login login);
@@ -27,6 +32,10 @@ public interface FacePetService {
     @POST(REGISTER_URL)
     Observable<Token> registerUser(@Body Usuario usuario);
 
+    @GET(GET_EMPRESAS_URL)
+    Observable<List<Empresa>> getEmpresas();
 
+    @GET(GET_EVENTOS_URL)
+    Observable<List<Eventos>> getEvents();
 
 }
