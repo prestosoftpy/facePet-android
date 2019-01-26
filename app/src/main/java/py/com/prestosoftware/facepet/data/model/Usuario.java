@@ -2,7 +2,7 @@ package py.com.prestosoftware.facepet.data.model;
 
 public class Usuario {
     private String nombre;
-    private String apellido;
+    //private String apellido;
     private String direccion;
     private String email;
     private String clave;
@@ -30,13 +30,13 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+//    public String getApellido() {
+//        return apellido;
+//    }
+//
+//    public void setApellido(String apellido) {
+//        this.apellido = apellido;
+//    }
 
 
 
@@ -76,7 +76,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
+                //", apellido='" + apellido + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", email='" + email + '\'' +
                 ", clave='" + clave + '\'' +

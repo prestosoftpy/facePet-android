@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @BindView(R.id.edtEmail) EditText mEdtEmail;
     @BindView(R.id.edtNombre) EditText mEdtNombre;
     @BindView(R.id.edtPassword) EditText mEdtPassword;
-    @BindView(R.id.edtApellidok) EditText mEdtApellido;
+    //@BindView(R.id.edtApellidok) EditText mEdtApellido;
     @BindView(R.id.edtTelefono) EditText mEdtTelefono;
     @BindView(R.id.edtCiudadId) EditText mEdtCiudadId;
     @BindView(R.id.edtDireccion) EditText mEdtDireccion;
@@ -90,13 +90,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
         String email = mEdtEmail.getText().toString();
         String nombre = mEdtNombre.getText().toString();
-        String apellido = mEdtApellido.getText().toString();
+        //String apellido = mEdtApellido.getText().toString();
         String telefono = mEdtTelefono.getText().toString();
         String direccion = mEdtDireccion.getText().toString();
         String password = mEdtPassword.getText().toString();
         int ciudad_id = Integer.valueOf(mEdtCiudadId.getText().toString());
 
-        if(!email.isEmpty() && !nombre.isEmpty() && !password.isEmpty() && !apellido.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty() ){
+        if(!email.isEmpty() && !nombre.isEmpty() && !password.isEmpty() /*&& !apellido.isEmpty()*/ && !telefono.isEmpty() && !direccion.isEmpty() ){
 //            Log.d(TAG, email);
 //            Log.d(TAG, nombre);
 //            Log.d(TAG, password);
@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
             usuario.setEmail(email);
             usuario.setNombre(nombre);
-            usuario.setApellido(apellido);
+            //usuario.setApellido(apellido);
             usuario.setCelular(telefono);
             usuario.setCiudad_id(ciudad_id);
             usuario.setDireccion(direccion);

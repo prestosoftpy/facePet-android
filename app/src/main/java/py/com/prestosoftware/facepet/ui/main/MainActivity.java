@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.local.FacePetPreference;
+import py.com.prestosoftware.facepet.ui.Events.EventsFragment;
 import py.com.prestosoftware.facepet.ui.petshop.PetShopFragment;
 import py.com.prestosoftware.facepet.ui.petshop.dummy.DummyContent;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //transaction.replace(R.id.main_container , showHomeView());
-        //transaction.commit();
+        transaction.replace(R.id.main_container , showHomeView());
+        transaction.commit();
         Log.d(TAG, "onCreate");
     }
 
@@ -119,11 +120,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private Fragment showHomeView(){
-        return PetShopFragment.newInstance();
+        return EventsFragment.newInstance();
     }
 
-//    @Override
-//    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-//        Log.d(TAG, item.toString());
-//    }
 }

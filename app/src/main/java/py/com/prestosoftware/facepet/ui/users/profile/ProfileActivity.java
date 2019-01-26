@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     private final String TAG = ProfileActivity.class.getSimpleName();
 
     @BindView(R.id.txtNombreProfile) TextView txtNombre;
-    @BindView(R.id.txtApellidoProfile) TextView txtApellido;
+    //@BindView(R.id.txtApellidoProfile) TextView txtApellido;
     @BindView(R.id.txtEmail) TextView txtEmail;
     @BindView(R.id.txtTelefono) TextView txtTelefono;
     @BindView(R.id.txtCiudad) TextView txtCiudad;
@@ -99,7 +99,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         if(usuario!= null) {
 
             txtNombre.setText(usuario.getNombre());
-            txtApellido.setText(usuario.getApellido());
+            //txtApellido.setText(usuario.getApellido());
             txtEmail.setText(usuario.getEmail());
             txtTelefono.setText(usuario.getCelular());
             txtCiudad.setText(usuario.getCiudad_id());

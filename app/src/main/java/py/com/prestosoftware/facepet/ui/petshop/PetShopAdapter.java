@@ -39,8 +39,8 @@ public class PetShopAdapter extends RecyclerView.Adapter<PetShopAdapter.ViewHold
         holder.mDireccion.setText(empresas.get(position).getDireccion());
 
         Picasso.get().load(empresas.get(position).getImagenUrl())
-                .centerCrop()
-                //.fit()
+                //.centerCrop()
+                .fit()
                 .into(holder.imgEmpresa);
         //Alternativas a Picasso
         //fresco - Facebook
