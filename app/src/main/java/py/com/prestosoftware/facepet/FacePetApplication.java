@@ -5,7 +5,10 @@ import android.app.Application;
 import py.com.prestosoftware.facepet.di.components.ApplicationComponent;
 import py.com.prestosoftware.facepet.di.components.DaggerApplicationComponent;
 import py.com.prestosoftware.facepet.di.modules.ApplicationModule;
+import py.com.prestosoftware.facepet.di.modules.CityModule;
 import py.com.prestosoftware.facepet.di.modules.NetworkModule;
+import py.com.prestosoftware.facepet.di.modules.PetShopModule;
+import py.com.prestosoftware.facepet.di.modules.ReservationsModule;
 import py.com.prestosoftware.facepet.di.modules.UserModule;
 
 public class FacePetApplication extends Application {
@@ -30,6 +33,9 @@ public class FacePetApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .networkModule(new NetworkModule())
                 .userModule(new UserModule())
+                .cityModule(new CityModule())
+                .petShopModule(new PetShopModule())
+                .reservationsModule(new ReservationsModule())
                 .build();
         graph.inject(this);
 

@@ -26,4 +26,11 @@
     <string name="txt_reg_apellido">Last Name</string>
     <string name="city_id">City Id</string>
 
+    <string name="txt_Reservarturno">Reserve shift</string>
+    <string name="txt_seleccionfecha">Select the date</string>
+    <string name="elija_su_mascota">Choose your pet</string>
+    <string name="cantidad_mascota">Quantity</string>
+    <string name="servicio_mascota">Service</string>
+    <string name="confirmar_reserva">Confirm</string>
+
 </resources>

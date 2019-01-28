@@ -19,4 +19,10 @@
     <string name="txt_reg_address">Direccion</string>
     <string name="txt_reg_apellido">Apellido</string>
     <string name="city_id">Id Ciudad</string>
+    <string name="txt_Reservarturno">Reservar Turno</string>
+    <string name="txt_seleccionfecha">Seleccione una fecha</string>
+    <string name="elija_su_mascota">Escoja su mascota</string>
+    <string name="cantidad_mascota">Cantidad</string>
+    <string name="servicio_mascota">Servicio</string>
+    <string name="confirmar_reserva">Confirmar</string>
 </resources>

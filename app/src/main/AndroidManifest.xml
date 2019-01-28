@@ -22,10 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.users.login.LoginActivity"></activity>
-        <activity android:name=".ui.users.register.RegisterActivity"></activity>
-        <activity android:name=".ui.users.profile.ProfileActivity"></activity>
-
+        <activity android:name=".ui.users.login.LoginActivity" />
+        <activity android:name=".ui.users.register.RegisterActivity" />
+        <activity android:name=".ui.users.profile.ProfileActivity" />
+        <activity android:name=".ui.reservas.ReservationsActivity"></activity>
     </application>
 
 </manifest>
