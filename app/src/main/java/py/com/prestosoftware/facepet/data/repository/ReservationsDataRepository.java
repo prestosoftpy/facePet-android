@@ -1,5 +1,7 @@
 package py.com.prestosoftware.facepet.data.repository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Reservas;
@@ -20,4 +22,10 @@ public class ReservationsDataRepository implements ReservationsRepository {
     public Observable<Reservas> reservasdata(Reservas reservas) {
         return service.submitReservation(reservas);
     }
+
+    @Override
+    public Observable<List<Reservas>> getReserva() {
+        return service.getReserva();
+    }
+
 }

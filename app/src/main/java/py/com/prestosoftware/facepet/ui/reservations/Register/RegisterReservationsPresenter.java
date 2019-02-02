@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.reservas;
+package py.com.prestosoftware.facepet.ui.reservations.Register;
 
 
 import javax.inject.Inject;
@@ -9,20 +9,20 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class ReservationsPresenter implements ReservationsContract.RerservationsPresenter {
+public class RegisterReservationsPresenter implements RegisterReservationsContract.RerservationsPresenter {
 
-    private ReservationsContract.ReservationsView view;
+    private RegisterReservationsContract.ReservationsView view;
     private ReservationsInteractor interactor;
     private CompositeSubscription subscription;
 
     @Inject
-    public ReservationsPresenter(ReservationsInteractor interactor) {
+    public RegisterReservationsPresenter(ReservationsInteractor interactor) {
         this.interactor = interactor;
         this.subscription = new CompositeSubscription();
     }
 
     @Override
-    public void attachView(ReservationsContract.ReservationsView t) {
+    public void attachView(RegisterReservationsContract.ReservationsView t) {
         this.view=t;
         this.subscription = new CompositeSubscription();
     }

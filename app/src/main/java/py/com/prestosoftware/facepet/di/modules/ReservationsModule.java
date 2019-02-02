@@ -9,8 +9,8 @@ import py.com.prestosoftware.facepet.data.repository.ReservationsDataRepository;
 import py.com.prestosoftware.facepet.domain.interactor.ReservationsInteractor;
 import py.com.prestosoftware.facepet.domain.interactor.ReservationsInteractorlmpl;
 import py.com.prestosoftware.facepet.domain.repository.ReservationsRepository;
-import py.com.prestosoftware.facepet.ui.reservas.ReservationsContract;
-import py.com.prestosoftware.facepet.ui.reservas.ReservationsPresenter;
+import py.com.prestosoftware.facepet.ui.reservations.Register.RegisterReservationsContract;
+import py.com.prestosoftware.facepet.ui.reservations.Register.RegisterReservationsPresenter;
 
 @Module
 public class ReservationsModule {
@@ -18,8 +18,8 @@ public class ReservationsModule {
 
     @Provides
     @Singleton
-    ReservationsContract.RerservationsPresenter providePresenter(ReservationsInteractor interactor){//pantalla
-        return new ReservationsPresenter(interactor);
+    RegisterReservationsContract.RerservationsPresenter providePresenter(ReservationsInteractor interactor){//pantalla
+        return new RegisterReservationsPresenter(interactor);
     }
     @Provides
     @Singleton

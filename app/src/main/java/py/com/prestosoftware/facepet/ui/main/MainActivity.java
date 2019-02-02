@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.ui.Petshop.PetShopFragment;
 import py.com.prestosoftware.facepet.ui.cities.CityFragment;
+import py.com.prestosoftware.facepet.ui.reservations.List.ReservationListFragment;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity  {
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
                     //return true;
-                    selectedFragment = showHomeView();
+                    selectedFragment = showReservationsList();
                     break;
                 case R.id.navigation_account:
                     //mTextMessage.setText(R.string.title_account);
@@ -124,6 +125,10 @@ public class MainActivity extends AppCompatActivity  {
    private Fragment showHomeViewCity(){
        return CityFragment.newInstance();
     }
+
+    private Fragment showReservationsList(){
+       return ReservationListFragment.newInstance();
+   }
 
 
     // @Override

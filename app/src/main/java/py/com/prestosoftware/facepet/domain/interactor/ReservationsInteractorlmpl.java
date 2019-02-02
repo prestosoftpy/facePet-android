@@ -1,5 +1,7 @@
 package py.com.prestosoftware.facepet.domain.interactor;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Reservas;
@@ -26,5 +28,9 @@ public class ReservationsInteractorlmpl implements ReservationsInteractor {
 
     }
 
+    @Override
+    public Observable<List<Reservas>> getReserva() {
+        return repository.getReserva();
+    }
 
 }
