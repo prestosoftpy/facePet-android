@@ -20,6 +20,7 @@ public interface FacePetService {
     String User_url="usuarios/{id}";
     String GET_EMPRESAS_URL = "empresas";
     String GET_EVENTOS_URL = "eventos";
+    String POST_FAVORITO = "favoritos/{idUsuario},{idEvento}";
 
     @POST(LOGIN_URL)
     Observable<Token> sigIn(@Body Login login);
@@ -37,5 +38,8 @@ public interface FacePetService {
 
     @GET(GET_EVENTOS_URL)
     Observable<List<Eventos>> getEvents();
+
+    @POST(POST_FAVORITO)
+    Observable<Boolean> setFav(@Path("idUsuario") int idUsuario,@Path("idEvento") int idEvento);
 
 }

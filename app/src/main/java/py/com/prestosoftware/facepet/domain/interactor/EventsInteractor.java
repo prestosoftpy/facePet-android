@@ -7,4 +7,6 @@ import py.com.prestosoftware.facepet.data.model.Eventos;
 
 public interface EventsInteractor {
     Observable<List<Eventos>> getEvents();
+
+    Observable<Boolean> setFav(int idUsuario, int idEvento);
 }

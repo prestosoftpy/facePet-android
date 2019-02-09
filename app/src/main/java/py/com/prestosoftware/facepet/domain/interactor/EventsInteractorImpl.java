@@ -21,4 +21,9 @@ public class EventsInteractorImpl implements EventsInteractor {
     public Observable<List<Eventos>> getEvents() {
         return repository.getEvents();
     }
+
+    @Override
+    public Observable<Boolean> setFav(int idUsuario, int idEvento) {
+        return repository.setFav(idUsuario,idEvento);
+    }
 }

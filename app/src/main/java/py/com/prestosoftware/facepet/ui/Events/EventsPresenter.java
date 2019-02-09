@@ -41,6 +41,24 @@ public class EventsPresenter implements EventsContract.EventsPresenter {
     }
 
     @Override
+    public void setFav(int idUsuario, int idEvento) {
+        this.view.showProgress();
+        interactor.setFav(idUsuario,idEvento)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        aBoolean -> {
+                            view.hideProgress();
+                            view.confirmFav(aBoolean);
+                        },
+                        error -> {
+                            view.hideProgress();
+                            view.onEntityError(error.getLocalizedMessage());
+                        }
+                );
+    }
+
+    @Override
     public void attachView(EventsContract.EventsView t) {
         this.view = t;
     }

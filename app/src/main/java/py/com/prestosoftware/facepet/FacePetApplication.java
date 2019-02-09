@@ -10,7 +10,7 @@ import py.com.prestosoftware.facepet.di.modules.UserModule;
 
 public class FacePetApplication extends Application {
 
-    public static final String API_URL = "http://192.168.1.109:3000/";
+    public static final String API_URL = "https://facepet-api-v1.herokuapp.com/";
 
     private ApplicationComponent graph;
 

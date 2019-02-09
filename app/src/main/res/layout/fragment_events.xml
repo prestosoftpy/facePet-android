@@ -117,7 +117,8 @@
                 android:src="@drawable/ic_favorite_border_black_24dp"
                 android:contentDescription="facepet"
                 android:layout_toStartOf="@id/ic_direction"
-                android:layout_margin="@dimen/margin_8dp"/>
+                android:layout_margin="@dimen/margin_8dp"
+                android:clickable="true"/>
 
             <ImageView
                 android:id="@+id/ic_direction"
@@ -126,7 +127,8 @@
                 android:src="@drawable/ic_directions_black_24dp"
                 android:contentDescription="facepet"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/margin_8dp" />
+                android:layout_margin="@dimen/margin_8dp"
+                android:clickable="true"/>
         </RelativeLayout>
     </LinearLayout>
 

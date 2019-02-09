@@ -1,7 +1,7 @@
 package py.com.prestosoftware.facepet.ui.Events;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Eventos;
@@ -89,6 +91,20 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
     public void loadEvents(List<Eventos> eventos) {
         mRecyclerView.setAdapter(new EventsAdapter(eventos));
     }
+
+    @Override
+    public void confirmFav(Boolean bool) {
+        if(bool){
+            Toast.makeText(getContext(),"Favorito registrado!",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(),"Error al Registrar Favorito",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+//    @OnClick(R.id.ic_favorito)
+//    public void setFav(int idUsuario, int idEvento){
+//        presenter.setFav(idUsuario,idEvento);
+//    }
 
     private void setupInjection(){
         FacePetApplication app = (FacePetApplication) getActivity().getApplication();

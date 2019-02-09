@@ -1,7 +1,6 @@
 package py.com.prestosoftware.facepet.ui.main;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,20 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
-import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.ui.Events.EventsFragment;
-import py.com.prestosoftware.facepet.ui.petshop.PetShopFragment;
-import py.com.prestosoftware.facepet.ui.petshop.dummy.DummyContent;
-import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
-import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 
 
 public class MainActivity extends AppCompatActivity {

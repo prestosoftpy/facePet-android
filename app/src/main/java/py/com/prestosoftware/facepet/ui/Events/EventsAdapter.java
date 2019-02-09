@@ -12,17 +12,24 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Eventos;
 import py.com.prestosoftware.facepet.helpers.Util;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
 
     private List<Eventos> eventos;
     private static final String TAG = EventsAdapter.class.getSimpleName();
+
+    @Inject
+    EventsPresenter presenter;
+
 
     public EventsAdapter(List<Eventos> eventosList) {
         this.eventos = eventosList;
@@ -55,6 +62,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public int getItemCount() {
         return eventos.size();
     }
+
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txt_usuario) TextView mTxtUsuario;

@@ -9,9 +9,11 @@ import py.com.prestosoftware.facepet.ui.base.View;
 public interface EventsContract {
     interface EventsPresenter extends Presenter<EventsView>{
         void getEvents();
+        void setFav(int idUsuario, int idEvento);
     }
 
     interface EventsView extends View{
         void loadEvents(List<Eventos> eventos);
+        void confirmFav(Boolean bool);
     }
 }
