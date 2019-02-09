@@ -6,10 +6,10 @@ public class Reservas {
 
     private int id;
     private Date fecha;
-    private int empresa_id;
+    private Empresa empresa_id;
     private int tipo_mascota;
     private int cantidad_mascotas;
-    private int servicio_if;
+    private int servicio_id;
     private String estado_reserva;
 
     public Reservas() {
@@ -27,17 +27,18 @@ public class Reservas {
         return fecha;
     }
 
+    public Empresa getEmpresa_id() {
+        return empresa_id;
+    }
+
+    public void setEmpresa_id(Empresa empresa_id) {
+        this.empresa_id = empresa_id;
+    }
+
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public int getEmpresa_id() {
-        return empresa_id;
-    }
-
-    public void setEmpresa_id(int empresa_id) {
-        this.empresa_id = empresa_id;
-    }
 
     public int getTipo_mascota() {
         return tipo_mascota;
@@ -55,12 +56,12 @@ public class Reservas {
         this.cantidad_mascotas = cantidad_mascotas;
     }
 
-    public int getServicio_if() {
-        return servicio_if;
+    public int getServicio_id() {
+        return servicio_id;
     }
 
-    public void setServicio_if(int servicio_if) {
-        this.servicio_if = servicio_if;
+    public void setServicio_id(int servicio_id) {
+        this.servicio_id = servicio_id;
     }
 
     public String getEstado_reserva() {

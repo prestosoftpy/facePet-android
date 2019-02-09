@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mascotas">
+        <item>Perro</item>
+        <item>Gato</item>
+
+    </string-array>
+    <string-array name="servicio" >
+        <item>Baño</item>
+        <item>Peluqueria</item>
+        <item>Corte de uñas</item>
+
+
+    </string-array>
+
+</resources>
