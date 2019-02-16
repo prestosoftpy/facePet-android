@@ -9,8 +9,8 @@ import py.com.prestosoftware.facepet.data.repository.PetShopDataRepository;
 import py.com.prestosoftware.facepet.domain.interactor.PetShopInteractor;
 import py.com.prestosoftware.facepet.domain.interactor.PetShopInteractorlmpl;
 import py.com.prestosoftware.facepet.domain.repository.PetShopRepository;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopContract;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopPresenter;
+import py.com.prestosoftware.facepet.ui.petshop.PetShopContract;
+import py.com.prestosoftware.facepet.ui.petshop.PetShopPresenter;
 
 @Module
 public class PetShopModule {

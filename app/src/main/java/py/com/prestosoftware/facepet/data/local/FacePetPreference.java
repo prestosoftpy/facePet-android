@@ -12,6 +12,7 @@ public class FacePetPreference {
         return context.getSharedPreferences(Util.PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 
+
     //Limpia el contenido de la Preferencia
     public void clear(final Context context){
         preferences(context).edit().clear().apply();
@@ -31,5 +32,13 @@ public class FacePetPreference {
 
     public static String getToken(final Context context){
         return preferences(context).getString(Util.TOKEN,"");
+    }
+
+    public static int getUsuarioID(final Context context){
+        return preferences(context).getInt(Util.USUARIO_ID,0);
+    }
+
+    public static void setUsuarioID(final Context context, int usuarioid){
+        preferences(context).edit().putInt(Util.USUARIO_ID, usuarioid).apply();
     }
 }

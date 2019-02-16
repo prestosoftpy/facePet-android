@@ -1,6 +1,7 @@
 package py.com.prestosoftware.facepet.ui.main;
 
 ;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,9 +12,11 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.R;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopFragment;
+import py.com.prestosoftware.facepet.data.local.FacePetPreference;
+import py.com.prestosoftware.facepet.ui.petshop.PetShopFragment;
 import py.com.prestosoftware.facepet.ui.cities.CityFragment;
 import py.com.prestosoftware.facepet.ui.reservations.List.ReservationListFragment;
+import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -31,9 +34,15 @@ public class MainActivity extends AppCompatActivity  {
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        android.support.v4.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_container, showHomeView());//para que inicie con la pantalla que le das , showomeview para este
-        transaction.commit();
+        if(FacePetPreference.getSesion(this)){
+            android.support.v4.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_container, showHomeView());//para que inicie con la pantalla que le das , showomeview para este
+            transaction.commit();
+        }else{
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
+
 
         /*android.support.v4.app.FragmentTransaction transactionCity= getSupportFragmentManager().beginTransaction();
         transactionCity.replace(R.id.main_container, showHomeViewCity());
@@ -118,6 +127,10 @@ public class MainActivity extends AppCompatActivity  {
             return true;
         }
     };
+
+  /*  private LoginActivity showLogin(){
+        return new LoginActivity();
+    }*/
    private Fragment showHomeView(){
        return PetShopFragment.newInstance();
     }

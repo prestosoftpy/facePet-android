@@ -31,7 +31,7 @@
                 android:id="@+id/txtciudadnombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
+                android:layout_margin="@dimen/text_margin16"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/text_size_16"
                 android:textStyle="bold"
@@ -41,7 +41,7 @@
                 android:id="@+id/txtciudaddescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
+                android:layout_margin="@dimen/text_margin16"
                 android:textAppearance="?attr/textAppearanceListItem" />
         </LinearLayout>
     </LinearLayout>

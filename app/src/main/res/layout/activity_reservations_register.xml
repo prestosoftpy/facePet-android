@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.reservations.Register.RegisterReservationsActivity">
+
 
     <TextView
         android:id="@+id/txttituloreserva"
@@ -18,7 +20,18 @@
         android:textSize="24dp"
         android:textStyle="bold"/>
 
-    <TextView
+    <!--El Scroll siempre debe contener un LinearLayout o RelativeLayout-->
+    <ScrollView
+        android:id="@+id/register-form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txttituloreserva">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
         android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,16 +43,16 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"/>
 
-    <EditText
+        <EditText
         android:id="@+id/edtFechaReserva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_8dp"
         android:layout_marginTop="@dimen/margin_8dp"
         android:layout_marginRight="@dimen/margin_8dp"
-        android:inputType="date" />
+        android:inputType="datetime" />
 
-    <TextView
+        <TextView
         android:id="@+id/txt2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +64,7 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"/>
 
-    <Spinner
+        <Spinner
         android:id="@+id/spnMascota"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +74,7 @@
         android:entries="@array/mascotas"
         android:textColor="@color/colorPrimary" />
 
-    <TextView
+        <TextView
         android:id="@+id/txt3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,7 +86,7 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"/>
 
-    <Spinner
+        <Spinner
         android:id="@+id/spnCantidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +97,7 @@
         android:textColor="@color/colorPrimary" />
 
 
-    <TextView
+        <TextView
         android:id="@+id/txt4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,15 +118,42 @@
         android:layout_marginRight="@dimen/margin_8dp"
         android:entries="@array/servicio"
         android:textColor="@color/colorPrimary" />
+     <TextView
+         android:id="@+id/txt5"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/empresaslist"
+         android:textColor="@color/colorPrimary"
+         android:layout_marginTop="@dimen/margin_16dp"
+         android:layout_marginLeft="@dimen/margin_8dp"
+         android:layout_marginRight="@dimen/margin_8dp"
+         android:textSize="@dimen/text_size_16"
+         android:textStyle="bold"/>
 
-    <Button
+    <Spinner
+        android:id="@+id/spnEmpresas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginRight="@dimen/margin_8dp"
+        android:textColor="@color/colorPrimary" />
+
+        <Button
         android:id="@+id/btnConfirmarReserva"
         style="@style/btn_default"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/confirmar_reserva"
-        android:layout_margin="@dimen/margin_16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginRight="@dimen/margin_16dp"
+
         />
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <include  android:id="@+id/progress_dialogReservation" layout="@layout/progress_dialog"/>
 </LinearLayout>

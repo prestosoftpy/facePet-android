@@ -2,10 +2,12 @@ package py.com.prestosoftware.facepet.ui.users.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
+import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.data.model.Usuario;
 import py.com.prestosoftware.facepet.ui.users.login.LoginActivity;
@@ -25,6 +28,7 @@ import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 
 public class ProfileActivity extends AppCompatActivity implements ProfileContract.ProfileView {
     private final String TAG = ProfileActivity.class.getSimpleName();
+
 
     @BindView(R.id.txtNombreProfile) TextView txtNombre;
     @BindView(R.id.txtApellidoProfile) TextView txtApellido;
@@ -49,7 +53,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     protected void onResume() {
         super.onResume();
         presenter.attachView(this);
-        presenter.UserData(1);
+
+        if(FacePetPreference.getUsuarioID(this)>0){
+            presenter.UserData(FacePetPreference.getUsuarioID(this));
+        }else{
+
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 
     @Override

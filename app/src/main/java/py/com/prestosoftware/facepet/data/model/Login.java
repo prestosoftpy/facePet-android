@@ -2,17 +2,17 @@ package py.com.prestosoftware.facepet.data.model;
 
 public class Login {
 
-    private String email;
+    private String correo;
     private String clave;
 
     public Login() {}
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getClave() {

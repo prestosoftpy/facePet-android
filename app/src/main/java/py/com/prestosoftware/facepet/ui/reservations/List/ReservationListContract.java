@@ -10,6 +10,7 @@ public interface ReservationListContract {
 
     interface  ReservationsView extends View {
         void loadReservas(List<Reservas> reservas);//que hara con los datos, este caso cargara la lista
+        void gotoRegisterReservations();
     }
 
     interface  ReservationListPresenter extends Presenter<ReservationsView> {//metodo para obtener las reservas

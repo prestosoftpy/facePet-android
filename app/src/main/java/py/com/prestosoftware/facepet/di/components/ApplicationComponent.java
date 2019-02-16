@@ -12,7 +12,7 @@ import py.com.prestosoftware.facepet.di.modules.PetShopModule;
 import py.com.prestosoftware.facepet.di.modules.ReservationsModule;
 import py.com.prestosoftware.facepet.di.modules.UserModule;
 import py.com.prestosoftware.facepet.ui.Donations.DonationsActivity;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopFragment;
+import py.com.prestosoftware.facepet.ui.petshop.PetShopFragment;
 import py.com.prestosoftware.facepet.ui.cities.CityFragment;
 import py.com.prestosoftware.facepet.ui.reservations.List.ReservationListFragment;
 import py.com.prestosoftware.facepet.ui.reservations.Register.RegisterReservationsActivity;

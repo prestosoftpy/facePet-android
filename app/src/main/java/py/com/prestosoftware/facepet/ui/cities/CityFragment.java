@@ -1,9 +1,7 @@
 package py.com.prestosoftware.facepet.ui.cities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,12 +19,6 @@ import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Ciudades;
-import py.com.prestosoftware.facepet.data.model.Empresa;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopAdapter;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopFragment;
-import py.com.prestosoftware.facepet.ui.Petshop.PetShopPresenter;
-import py.com.prestosoftware.facepet.ui.dummy.DummyContent;
-import py.com.prestosoftware.facepet.ui.dummy.DummyContent.DummyItem;
 
 public class CityFragment extends Fragment implements  CityContract.CiudadesView {
 

@@ -26,7 +26,7 @@
         <activity android:name=".ui.users.register.RegisterActivity" />
         <activity android:name=".ui.users.profile.ProfileActivity" />
         <activity android:name=".ui.reservations.Register.RegisterReservationsActivity" />
-        <activity android:name=".ui.Donations.DonationsActivity"></activity>
+        <activity android:name=".ui.Donations.DonationsActivity" />
     </application>
 
 </manifest>

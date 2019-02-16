@@ -7,7 +7,7 @@ import rx.Observable;
 
 public interface UserInteractor {
 
-    Observable<Token> loginUser(Login login);
+    Observable<Usuario> loginUser(Login login);
 
     Observable<Token> registerUser(Usuario usuario);
 

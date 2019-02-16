@@ -1,6 +1,8 @@
 package py.com.prestosoftware.facepet.ui.reservations.Register;
 
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Reservas;
@@ -14,6 +16,8 @@ public class RegisterReservationsPresenter implements RegisterReservationsContra
     private RegisterReservationsContract.ReservationsView view;
     private ReservationsInteractor interactor;
     private CompositeSubscription subscription;
+    @Inject
+    RegisterReservationsContract.RerservationsPresenter presenter;
 
     @Inject
     public RegisterReservationsPresenter(ReservationsInteractor interactor) {
@@ -23,7 +27,7 @@ public class RegisterReservationsPresenter implements RegisterReservationsContra
 
     @Override
     public void attachView(RegisterReservationsContract.ReservationsView t) {
-        this.view=t;
+        this.view = t;
         this.subscription = new CompositeSubscription();
     }
 
@@ -34,6 +38,7 @@ public class RegisterReservationsPresenter implements RegisterReservationsContra
 
     @Override
     public void saveReservation(Reservas reservitas) {
+        Log.e("ESTE ES EL OBJ", reservitas.toString());
         view.showProgress();
         subscription.add(
                 interactor.reservasdata(reservitas)
@@ -43,14 +48,14 @@ public class RegisterReservationsPresenter implements RegisterReservationsContra
                         .subscribe(reserva -> {
                                     interactor.saveToDb(reserva);
                                     view.hideProgress();
+                                    // presenter.saveReservation(reserva);
                                     view.gotoMainActivity();
-
-                        },
-                        error -> {
-                           view.hideProgress();
-                           view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
-                        }
-                       )
+                                },
+                                error -> {
+                                    view.hideProgress();
+                                    view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
+                                }
+                        )
         );
     }
 

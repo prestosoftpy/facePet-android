@@ -1,74 +1,93 @@
 package py.com.prestosoftware.facepet.data.model;
 
-import java.util.Date;
-
 public class Reservas {
 
-    private int id;
-    private Date fecha;
-    private Empresa empresa_id;
-    private int tipo_mascota;
-    private int cantidad_mascotas;
-    private int servicio_id;
-    private String estado_reserva;
+    private String fecha;
+    private int usuarioId;
+    private int empresaId;
+    private String imagenUrl;
+    private int tipoMascota;
+    private int cantidadMascota;
+    private int servicioId;
+    private String estado;
 
     public Reservas() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public Empresa getEmpresa_id() {
-        return empresa_id;
-    }
-
-    public void setEmpresa_id(Empresa empresa_id) {
-        this.empresa_id = empresa_id;
-    }
-
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-
-    public int getTipo_mascota() {
-        return tipo_mascota;
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setTipo_mascota(int tipo_mascota) {
-        this.tipo_mascota = tipo_mascota;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
-    public int getCantidad_mascotas() {
-        return cantidad_mascotas;
+    public int getEmpresaId() {
+        return empresaId;
     }
 
-    public void setCantidad_mascotas(int cantidad_mascotas) {
-        this.cantidad_mascotas = cantidad_mascotas;
+    public void setEmpresaId(int empresaId) {
+        this.empresaId = empresaId;
     }
 
-    public int getServicio_id() {
-        return servicio_id;
+    public String getImagenUrl() {
+        return imagenUrl;
     }
 
-    public void setServicio_id(int servicio_id) {
-        this.servicio_id = servicio_id;
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
-    public String getEstado_reserva() {
-        return estado_reserva;
+    public int getTipoMascota() {
+        return tipoMascota;
     }
 
-    public void setEstado_reserva(String estado_reserva) {
-        this.estado_reserva = estado_reserva;
+    public void setTipoMascota(int tipoMascota) {
+        this.tipoMascota = tipoMascota;
+    }
+
+    public int getCantidadMascota() {
+        return cantidadMascota;
+    }
+
+    public void setCantidadMascota(int cantidadMascota) {
+        this.cantidadMascota = cantidadMascota;
+    }
+
+    public int getServicioId() {
+        return servicioId;
+    }
+
+    public void setServicioId(int servicioId) {
+        this.servicioId = servicioId;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservas{" +
+                "fecha='" + fecha + '\'' +
+                ", empresaId=" + empresaId +
+                ", imagenUrl='" + imagenUrl + '\'' +
+                ", tipoMascota=" + tipoMascota +
+                ", cantidadMascota=" + cantidadMascota +
+                ", servicioId=" + servicioId +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }
