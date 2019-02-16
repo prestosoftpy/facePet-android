@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.R;
-import py.com.prestosoftware.facepet.ui.Events.EventsFragment;
+import py.com.prestosoftware.facepet.ui.events.EventsFragment;
 
 
 public class MainActivity extends AppCompatActivity {

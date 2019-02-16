@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Events.dummy;
+package py.com.prestosoftware.facepet.ui.events.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

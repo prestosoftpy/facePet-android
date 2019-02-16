@@ -1,8 +1,8 @@
-package py.com.prestosoftware.facepet.ui.Events.dummy;
+package py.com.prestosoftware.facepet.ui.events.dummy;
 
 import java.util.List;
 
-import py.com.prestosoftware.facepet.data.model.Eventos;
+import py.com.prestosoftware.facepet.data.model.Evento;
 import py.com.prestosoftware.facepet.ui.base.Presenter;
 import py.com.prestosoftware.facepet.ui.base.View;
 
@@ -13,7 +13,7 @@ public interface EventsContract {
     }
 
     interface EventsView extends View{
-        void loadEvents(List<Eventos> eventos);
+        void loadEvents(List<Evento> eventos);
         void confirmFav(Boolean bool);
     }
 }

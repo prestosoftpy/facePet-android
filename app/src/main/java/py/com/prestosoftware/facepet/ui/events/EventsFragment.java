@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Events;
+package py.com.prestosoftware.facepet.ui.events;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -16,8 +16,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
-import py.com.prestosoftware.facepet.data.model.Eventos;
-import py.com.prestosoftware.facepet.ui.Events.dummy.EventsContract;
+import py.com.prestosoftware.facepet.data.model.Evento;
+import py.com.prestosoftware.facepet.helpers.OnClickListener;
+import py.com.prestosoftware.facepet.ui.events.dummy.EventsContract;
 
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
     @Inject
     EventsPresenter presenter;
 
+    private EventsAdapter adapter;
+
     private static final String TAG = EventsFragment.class.getSimpleName();
 
     private static EventsFragment fragment;
@@ -46,6 +49,8 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
         }
         return fragment;
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,26 +93,29 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
     }
 
     @Override
-    public void loadEvents(List<Eventos> eventos) {
-        mRecyclerView.setAdapter(new EventsAdapter(eventos));
+    public void loadEvents(List<Evento> eventos) {
+
+        mRecyclerView.setAdapter(new EventsAdapter(eventos, new OnClickListener() {
+            @Override
+            public void onItemClick(Evento evento) {
+                presenter.setFav(evento.getUsuarioId(),evento.getId());
+            }
+        }));
     }
 
     @Override
     public void confirmFav(Boolean bool) {
         if(bool){
-            Toast.makeText(getContext(),"Favorito registrado!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Favorito registrado!",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(getContext(),"Error al Registrar Favorito",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Error al Registrar Favorito",Toast.LENGTH_LONG).show();
         }
     }
-
-//    @OnClick(R.id.ic_favorito)
-//    public void setFav(int idUsuario, int idEvento){
-//        presenter.setFav(idUsuario,idEvento);
-//    }
 
     private void setupInjection(){
         FacePetApplication app = (FacePetApplication) getActivity().getApplication();
         app.getGraph().inject(this);
     }
+
+
 }

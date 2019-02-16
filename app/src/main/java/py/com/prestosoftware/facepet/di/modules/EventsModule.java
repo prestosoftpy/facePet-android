@@ -9,8 +9,8 @@ import py.com.prestosoftware.facepet.data.repository.EventsDataRepository;
 import py.com.prestosoftware.facepet.domain.interactor.EventsInteractor;
 import py.com.prestosoftware.facepet.domain.interactor.EventsInteractorImpl;
 import py.com.prestosoftware.facepet.domain.repository.EventsRepository;
-import py.com.prestosoftware.facepet.ui.Events.EventsPresenter;
-import py.com.prestosoftware.facepet.ui.Events.dummy.EventsContract;
+import py.com.prestosoftware.facepet.ui.events.EventsPresenter;
+import py.com.prestosoftware.facepet.ui.events.dummy.EventsContract;
 
 @Module
 public class EventsModule {

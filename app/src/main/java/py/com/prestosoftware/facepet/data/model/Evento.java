@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Eventos {
+public class Evento {
 
 
     private int id;
@@ -35,7 +35,7 @@ public class Eventos {
         "activo": 1
 * */
 
-    public Eventos() {
+    public Evento() {
     }
 
     public int getId() {
@@ -137,7 +137,7 @@ public class Eventos {
 
     @Override
     public String toString() {
-        return "Eventos{" +
+        return "Evento{" +
                 "id=" + id +
                 ", fecha=" + fecha +
                 ", ciudadId=" + ciudadId +

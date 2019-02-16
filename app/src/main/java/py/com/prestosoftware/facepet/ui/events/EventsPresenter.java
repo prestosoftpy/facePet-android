@@ -1,9 +1,9 @@
-package py.com.prestosoftware.facepet.ui.Events;
+package py.com.prestosoftware.facepet.ui.events;
 
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.domain.interactor.EventsInteractor;
-import py.com.prestosoftware.facepet.ui.Events.dummy.EventsContract;
+import py.com.prestosoftware.facepet.ui.events.dummy.EventsContract;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;

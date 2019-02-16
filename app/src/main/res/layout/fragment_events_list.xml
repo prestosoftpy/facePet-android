@@ -9,7 +9,7 @@
         android:name="py.com.prestosoftware.facepet.ui.Events.EventsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.Events.EventsFragment"
+        tools:context=".ui.events.EventsFragment"
         tools:listitem="@layout/fragment_events" />
 
 
