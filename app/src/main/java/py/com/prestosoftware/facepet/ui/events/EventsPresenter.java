@@ -47,9 +47,9 @@ public class EventsPresenter implements EventsContract.EventsPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        aBoolean -> {
+                        fav -> {
                             view.hideProgress();
-                            view.confirmFav(aBoolean);
+                            view.confirmFav(fav);
                         },
                         error -> {
                             view.hideProgress();

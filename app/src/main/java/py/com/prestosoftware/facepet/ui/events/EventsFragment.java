@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Evento;
+import py.com.prestosoftware.facepet.data.model.Favoritos;
 import py.com.prestosoftware.facepet.helpers.OnClickListener;
 import py.com.prestosoftware.facepet.ui.events.dummy.EventsContract;
 
@@ -104,8 +104,8 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
     }
 
     @Override
-    public void confirmFav(Boolean bool) {
-        if(bool){
+    public void confirmFav(Favoritos favoritos) {
+        if(favoritos.getId()>0){
             Toast.makeText(getContext(),"Favorito registrado!",Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(getContext(),"Error al Registrar Favorito",Toast.LENGTH_LONG).show();

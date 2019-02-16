@@ -4,6 +4,7 @@ import java.util.List;
 
 import py.com.prestosoftware.facepet.data.model.Empresa;
 import py.com.prestosoftware.facepet.data.model.Evento;
+import py.com.prestosoftware.facepet.data.model.Favoritos;
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
 import py.com.prestosoftware.facepet.data.model.Usuario;
@@ -40,6 +41,6 @@ public interface FacePetService {
     Observable<List<Evento>> getEvents();
 
     @POST(POST_FAVORITO)
-    Observable<Boolean> setFav(@Path("usuario_id") int idUsuario,@Path("evento_id") int idEvento);
+    Observable<Favoritos> setFav(@Path("usuario_id") int idUsuario, @Path("evento_id") int idEvento);
 
 }

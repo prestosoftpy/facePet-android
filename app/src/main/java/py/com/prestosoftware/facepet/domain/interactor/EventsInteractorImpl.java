@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Evento;
+import py.com.prestosoftware.facepet.data.model.Favoritos;
 import py.com.prestosoftware.facepet.domain.repository.EventsRepository;
 import rx.Observable;
 
@@ -23,7 +24,7 @@ public class EventsInteractorImpl implements EventsInteractor {
     }
 
     @Override
-    public Observable<Boolean> setFav(int idUsuario, int idEvento) {
+    public Observable<Favoritos> setFav(int idUsuario, int idEvento) {
         return repository.setFav(idUsuario,idEvento);
     }
 }
