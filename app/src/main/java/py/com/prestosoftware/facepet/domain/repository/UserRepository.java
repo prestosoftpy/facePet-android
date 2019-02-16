@@ -7,7 +7,7 @@ import rx.Observable;
 
 public interface UserRepository {
 
-    Observable<Token> login(Login login);
+    Observable<Usuario> login(Login login);
 
 
     Observable<Usuario> userData(int id);

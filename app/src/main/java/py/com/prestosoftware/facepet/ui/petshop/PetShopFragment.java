@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Petshop;
+package py.com.prestosoftware.facepet.ui.petshop;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

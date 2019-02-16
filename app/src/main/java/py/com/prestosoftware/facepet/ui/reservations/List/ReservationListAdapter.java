@@ -13,12 +13,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Reservas;
+import py.com.prestosoftware.facepet.helpers.Util;
 
 import java.util.List;
 
 public class ReservationListAdapter extends RecyclerView.Adapter<ReservationListAdapter.ViewHolder> {
 
     private final List<Reservas> reservas;
+
 
 
 
@@ -29,19 +31,19 @@ public class ReservationListAdapter extends RecyclerView.Adapter<ReservationList
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_petshop, parent, false);
+                .inflate(R.layout.fragment_reservations, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //holder.mItem = empresas.get(position);
-        holder.mFechaReserva.setText((CharSequence) reservas.get(position).getFecha());
-        holder.mEstadoReserva.setText(reservas.get(position).getEstado_reserva());
+        holder.mFechaReserva.setText(/*Util.formatoFechaDDMMAAAA utilice con tipo date*/(reservas.get(position).getFecha()));
+        holder.mEstadoReserva.setText(reservas.get(position).getEstado());
 
-        Picasso.get().load(reservas.get(position).getEmpresa_id().getImagen_url())//Trae la imagen de internet
+        Picasso.get().load(reservas.get(position).getImagenUrl())//Trae la imagen de internet
                 .centerCrop().fit()//centra la imagen
-                .into(holder.imgReserva);//Carga en imgempresa
+                .into(holder.imgReserva);
 
     }
 

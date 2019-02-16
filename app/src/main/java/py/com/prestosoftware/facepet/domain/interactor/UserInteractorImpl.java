@@ -20,7 +20,7 @@ public class UserInteractorImpl implements UserInteractor {
 
 
     @Override
-    public Observable<Token> loginUser(Login login) {
+    public Observable<Usuario> loginUser(Login login) {
         return repository.login(login);
     }
 

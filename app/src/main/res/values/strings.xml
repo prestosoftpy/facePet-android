@@ -32,5 +32,7 @@
     <string name="cantidad_mascota">Quantity</string>
     <string name="servicio_mascota">Service</string>
     <string name="confirmar_reserva">Confirm</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
+    <string name="empresaslist">Business</string>
 
 </resources>

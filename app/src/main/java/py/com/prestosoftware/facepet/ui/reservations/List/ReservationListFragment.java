@@ -1,7 +1,9 @@
 package py.com.prestosoftware.facepet.ui.reservations.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,9 +20,11 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Reservas;
+import py.com.prestosoftware.facepet.ui.reservations.Register.RegisterReservationsActivity;
 
 
 public class ReservationListFragment extends Fragment implements ReservationListContract.ReservationsView{
@@ -79,6 +83,12 @@ public class ReservationListFragment extends Fragment implements ReservationList
     @Override
     public void loadReservas(List<Reservas> reservas) {
         mRecyclerView.setAdapter(new ReservationListAdapter(reservas));
+    }
+
+    @Override
+    @OnClick(R.id.irRegistrarReserva)
+    public void gotoRegisterReservations() {
+      startActivity(new Intent(getContext(), RegisterReservationsActivity.class));//getContext() cuando es un fragment, this cuando es un activity
     }
 
     @Override

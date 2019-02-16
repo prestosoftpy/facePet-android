@@ -16,6 +16,12 @@ public class Empresa {
 
     }
 
+    public Empresa(int id, String nombre, String imagen_url, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagen_url = imagen_url;
+        this.direccion = direccion;
+    }
 
     public int getId() {
         return id;
@@ -47,5 +53,10 @@ public class Empresa {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    @Override
+    public String toString() {
+        return  nombre;//para que muestre en el sppiner de empresas en registerReservation
     }
 }

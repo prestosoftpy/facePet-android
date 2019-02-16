@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Petshop;
+package py.com.prestosoftware.facepet.ui.petshop;
 
 import javax.inject.Inject;
 import py.com.prestosoftware.facepet.domain.interactor.PetShopInteractor;

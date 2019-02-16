@@ -19,7 +19,7 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public Observable<Token> login(Login login) {
+    public Observable<Usuario> login(Login login) {
         return service.sigIn(login);
     }
 

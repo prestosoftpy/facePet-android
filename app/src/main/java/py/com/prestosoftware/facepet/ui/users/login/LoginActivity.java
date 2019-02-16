@@ -1,14 +1,14 @@
 package py.com.prestosoftware.facepet.ui.users.login;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import javax.inject.Inject;
 
@@ -20,8 +20,9 @@ import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.local.FacePetPreference;
 import py.com.prestosoftware.facepet.data.model.Login;
-import py.com.prestosoftware.facepet.data.model.Token;
+import py.com.prestosoftware.facepet.data.model.Usuario;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
+import py.com.prestosoftware.facepet.ui.users.profile.ProfileActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterActivity;
 import py.com.prestosoftware.facepet.ui.users.register.RegisterContract;
 
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 
+    @BindView(R.id.ProfileContainer)
+    RelativeLayout profile_container;
     @BindView(R.id.edtEmail) EditText mEdtEmail;
     @BindView(R.id.edtClave) EditText mEdtClave;
     @BindView(R.id.progress_dialog) ProgressBar mProgressDialog;
@@ -61,13 +64,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     }
 
     @Override
-    public void goToMainActivity(Token token) {
+    public void goToMainActivity(Usuario usuario) {
+        if(usuario != null){
+            FacePetPreference.setUsuarioID(this,usuario.getId());//trae el idusuario junto con el token
+            FacePetPreference.setSesion(this);
+           // FacePetPreference.setToken(this,usuario.getToken());
+            startActivity(new Intent(this, MainActivity.class));
+            }else{
+            Snackbar.make(profile_container, "Email o Contraseña Incorrectos", Snackbar.LENGTH_LONG).show();
+        }
 
-        FacePetPreference.setSesion(this);
-        FacePetPreference.setToken(this,token.getToken());
-        startActivity(new Intent(this, MainActivity.class));
 
     }
+
 
     @Override
     public void goToRegisterActivity() {
@@ -95,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void onEntityError(String error) {
-
+        Snackbar.make(profile_container, "Email o Contraseña Incorrectos", Snackbar.LENGTH_LONG).show();
     }
 
     //Local Methods
@@ -113,9 +122,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
             //Log.d(TAG, clave);
 
             Login login = new Login();
-            login.setEmail(email);
+            login.setCorreo(email);
             login.setClave(clave);
             presenter.loginUser(login);
+
+
         }
 
 

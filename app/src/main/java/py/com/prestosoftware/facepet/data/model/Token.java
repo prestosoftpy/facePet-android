@@ -4,6 +4,7 @@ public class Token {
 
     private boolean auth;
     private String token;
+    private Usuario usuario;
 
     public Token() {}
 
@@ -21,5 +22,13 @@ public class Token {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

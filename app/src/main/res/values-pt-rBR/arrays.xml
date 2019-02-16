@@ -7,7 +7,7 @@
     </string-array>
     <string-array name="servicio" >
         <item>Banho</item>
-        <item>cabeleireiro</item>
-        <item>corte de unhas</item>
+        <item>Cabeleireiro</item>
+        <item>Corte de unhas</item>
     </string-array>
 </resources>

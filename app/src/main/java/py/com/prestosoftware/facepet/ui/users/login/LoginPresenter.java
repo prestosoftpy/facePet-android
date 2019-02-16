@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import py.com.prestosoftware.facepet.data.model.Login;
 import py.com.prestosoftware.facepet.data.model.Token;
+import py.com.prestosoftware.facepet.data.model.Usuario;
 import py.com.prestosoftware.facepet.domain.interactor.UserInteractor;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -51,7 +52,7 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
 //                            view.onEntityError(error.getLocalizedMessage()); //CAMBIAR EN PROD
 //                        }
 //                )
-                .subscribe(new Subscriber<Token>() {
+                .subscribe(new Subscriber<Usuario>() {
                     @Override
                     public void onCompleted() {
                         view.hideProgress();
@@ -64,8 +65,8 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
                     }
 
                     @Override
-                    public void onNext(Token token) {
-                        view.goToMainActivity(token);
+                    public void onNext(Usuario usuario1) {
+                        view.goToMainActivity(usuario1);
                     }
                 })
         );

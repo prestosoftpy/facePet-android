@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Petshop;
+package py.com.prestosoftware.facepet.ui.petshop;
 
 import java.util.List;
 

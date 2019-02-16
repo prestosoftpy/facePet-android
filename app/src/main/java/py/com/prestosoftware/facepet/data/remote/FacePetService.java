@@ -27,7 +27,7 @@ public interface FacePetService {
     String POST_Donaciones= "donaciones";
 
     @POST(LOGIN_URL)
-    Observable<Token> sigIn(@Body Login login);
+    Observable<Usuario> sigIn(@Body Login login);
 
 
     @GET(User_url)
