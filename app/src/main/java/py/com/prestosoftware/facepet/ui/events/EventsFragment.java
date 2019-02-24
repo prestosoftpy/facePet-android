@@ -1,4 +1,5 @@
 package py.com.prestosoftware.facepet.ui.events;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -18,7 +19,9 @@ import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Evento;
 import py.com.prestosoftware.facepet.data.model.Favoritos;
 import py.com.prestosoftware.facepet.helpers.OnClickListener;
+import py.com.prestosoftware.facepet.helpers.Util;
 import py.com.prestosoftware.facepet.ui.events.dummy.EventsContract;
+import py.com.prestosoftware.facepet.ui.events.localizacion.LocalizacionActivity;
 
 import java.util.List;
 
@@ -99,6 +102,15 @@ public class EventsFragment extends Fragment implements EventsContract.EventsVie
             @Override
             public void onItemClick(Evento evento) {
                 presenter.setFav(evento.getUsuarioId(),evento.getId());
+            }
+
+            @Override
+            public void localizClick(Evento evento) {
+                Log.d(TAG,evento.toString());
+                Intent i = new Intent(getContext(),LocalizacionActivity.class);
+                i.putExtra(Util.LATITUD,evento.getLatitud());
+                i.putExtra(Util.LONGITUD,evento.getLongitud());
+                startActivity(i);
             }
         }));
     }

@@ -57,7 +57,7 @@ public class EventsPresenter implements EventsContract.EventsPresenter {
                         }
                 );
     }
-
+    //py.com.prestosoftware.facepet
     @Override
     public void attachView(EventsContract.EventsView t) {
         this.view = t;

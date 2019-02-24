@@ -87,6 +87,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         @BindView(R.id.img_event) ImageView mImgEvento;
         @BindView(R.id.txt_descripcion) TextView mTxtDescripcion;
         @BindView(R.id.ic_favorito) ImageView mImgFav;
+        @BindView(R.id.ic_direction) ImageView mImgLoc;
 
         public ViewHolder(View view) {
             super(view);
@@ -102,6 +103,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 //            });
 
             mImgFav.setOnClickListener(c -> listener.onItemClick(evento));
+            mImgLoc.setOnClickListener(c -> listener.localizClick(evento));
         }
 
 

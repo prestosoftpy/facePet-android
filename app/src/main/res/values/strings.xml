@@ -32,5 +32,7 @@
     <string name="descripcion">Description</string>
     <string name="adoptar">ADOPT</string>
     <string name="ayudar">HELP</string>
+    <string name="title_activity_localizacion">Localizacion de Mascotas</string>
+    <string name="error_permission_map">No tiene Permisos</string>
 
 </resources>
