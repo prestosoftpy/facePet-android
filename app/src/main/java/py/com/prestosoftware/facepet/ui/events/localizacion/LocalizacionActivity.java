@@ -1,26 +1,46 @@
 package py.com.prestosoftware.facepet.ui.events.localizacion;
 
-import android.content.Context;
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
+
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Message;
+
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.Task;
+
 //import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -28,27 +48,33 @@ import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
+
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Evento;
 import py.com.prestosoftware.facepet.helpers.GMapV2Direction;
 import py.com.prestosoftware.facepet.helpers.GMapV2DirectionAsyncTask;
-import py.com.prestosoftware.facepet.helpers.Util;
+
+import py.com.prestosoftware.facepet.helpers.MapType;
+import py.com.prestosoftware.facepet.ui.main.MainActivity;
+
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 public class LocalizacionActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 154;
+    private static final int REQUEST_GOOGLE = 365;
+    private GoogleMap googleMap;
     private Evento evento;
-    private Float lat,lng;
+    private Float lat, lng;
     private LocationManager locManager;
     private Location loc;
-
-
-
-
-    
+    private LocationCallback mLocationCallback;
+    private LocationRequest mLocationRequest;
+    private FusedLocationProviderClient mFusedLocationClient;
 
     String TAG = LocalizacionActivity.class.getSimpleName();
+
+
     public LocalizacionActivity() {
     }
 
@@ -63,11 +89,36 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        lat = getIntent().getFloatExtra(Util.LATITUD,0);
-        lng = getIntent().getFloatExtra(Util.LONGITUD,0);
-        Log.d(TAG, "Latitud = "+lat+" Longitud = "+lng);
 
 
+        createLocationCallback();
+        buildLocationSettingsRequest();
+//        lat = getIntent().getFloatExtra(Util.LATITUD, 0);
+//        lng = getIntent().getFloatExtra(Util.LONGITUD, 0);
+//        Log.d(TAG, "Latitud = " + lat + " Longitud = " + lng);
+
+
+
+    }
+
+
+    private void requestPermissionForLocation() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(LocalizacionActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            ActivityCompat.requestPermissions(LocalizacionActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_PERMISSIONS_REQUEST_CODE);
+
+        } else {
+            ActivityCompat.requestPermissions(LocalizacionActivity.this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_PERMISSIONS_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        buildLocationSettingsRequest();
     }
 
 
@@ -82,19 +133,27 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//        Log.d(TAG,"Esta en OnMapReady");
-        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        LatLng origen = new LatLng(loc.getLatitude(),loc.getLongitude());
-        //LatLng origen = new LatLng(-34,151);
-        LatLng destino = new LatLng(lat,lng);
-        route(origen,destino,"driving");
+        this.googleMap = googleMap;
+        this.googleMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
+        this.googleMap.getUiSettings().setAllGesturesEnabled(true);//enable gestures
+        this.googleMap.getUiSettings().setMapToolbarEnabled(true);
+        this.googleMap.setOnMapLongClickListener(latLng -> {
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(latLng)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+            marker.setTitle("AQUI");
+
+        });
+
+
+
+//        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        LatLng origen = new LatLng(loc.getLatitude(), loc.getLongitude());
+//        //LatLng origen = new LatLng(-34,151);
+//        LatLng destino = new LatLng(lat, lng);
+//        route(origen, destino, "driving");
+
 
 //        GMapV2DirectionAsyncTask md = new GMapV2DirectionAsyncTask();
 //
@@ -107,9 +166,13 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //        for (int i = 0; i < directionPoint.size(); i++) {
 //            rectLine.add(directionPoint.get(i));
 //        }
-//        Polyline polylin = mMap.addPolyline(rectLine);
+
+//        Polyline polylin = googleMap.addPolyline(rectLine);
 
     }
+
+
+
 
     protected void route(LatLng sourcePosition, LatLng destPosition, String mode) {
         final Handler handler = new Handler() {
@@ -124,7 +187,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
                     for (int i = 0; i < directionPoint.size(); i++) {
                         rectLine.add(directionPoint.get(i));
                     }
-                    Polyline polylin = mMap.addPolyline(rectLine);
+
+                    Polyline polylin = googleMap.addPolyline(rectLine);
+
                     md.getDurationText(doc);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -137,12 +202,164 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
     }
 
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+
+            case REQUEST_PERMISSIONS_REQUEST_CODE: {
+                if (grantResults.length <= 0) {
+                    // If user interaction was interrupted, the permission request is cancelled and you
+                    // receive empty arrays.
+                    Log.i(TAG, "User interaction was cancelled.");
+                } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.i(TAG, "Permission granted, updates requested, starting location updates");
+                    Toast.makeText(this, "Solicitud aceptada", Toast.LENGTH_SHORT).show();
+                    //startLocationUpdates();
+                }
+            }
+        }
+    }
+
+
+    private void createLocationCallback() {
+        mFusedLocationClient = getFusedLocationProviderClient(this);
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+                if (locationResult != null) {
+                  Log.i("Ubicacion", locationResult.toString());
+                }
+            }
+        };
+    }
+
+    @SuppressLint("MissingPermission")
+    private void buildLocationSettingsRequest() {
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//Setting priotity of Location request to high
+        mLocationRequest.setInterval(30 * 1000);//after 30sec the location will update
+        mLocationRequest.setFastestInterval(5 * 1000);//5 sec Time interval
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+
+        Task<LocationSettingsResponse> result =
+                LocationServices.getSettingsClient(this).checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(task -> {
+            try {
+                LocationSettingsResponse response = task.getResult(ApiException.class);
+                // All location settings are satisfied. The client can initialize location
+                // requests here.
+                if (checkPermissions()) {
+                    Log.e(TAG, "permiso de localizacion concecido");
+                    startLocationUpdates();
+                    if(googleMap!=null){ googleMap.setMyLocationEnabled(true); }
+                } else {
+                    getLastLocation();
+                    requestPermissionForLocation();
+                }
+            } catch (ApiException exception) {
+                switch (exception.getStatusCode()) {
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the
+                        // user a dialog.
+                        try {
+                            // Cast to a resolvable exception.
+                            ResolvableApiException resolvable = (ResolvableApiException) exception;
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            resolvable.startResolutionForResult(LocalizacionActivity.this, REQUEST_GOOGLE);
+                        } catch (IntentSender.SendIntentException e) {
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        break;
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQUEST_GOOGLE:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        Toast.makeText(this, "solicitud aceptada", Toast.LENGTH_SHORT).show();
+                        if (checkPermissions()) {
+                            Log.e(TAG, "permiso de localizacion concecido");
+                            startLocationUpdates();
+                        }
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        Toast.makeText(this, "La aplicación no funcionara si el GPS no está activo", Toast.LENGTH_SHORT).show();
+                        break;
+
+
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
+    private void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionForLocation();
+            return;
+        }
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                mLocationCallback,
+                null /* Looper */);
+    }
+
+    private boolean checkPermissions() {
+        int permissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        return permissionState == PackageManager.PERMISSION_GRANTED;
+    }
+
+
+    public void getLastLocation() {
+        // Get last known recent location using new Google Play Services SDK (v11+)
+        FusedLocationProviderClient locationClient = getFusedLocationProviderClient(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionForLocation();
+
+        }else {
+            locationClient.getLastLocation()
+                    .addOnSuccessListener(location -> {
+                        // GPS location can be null if GPS is switched off
+                        if (location != null) {
+                            //hacer que sea posible la conversion entre locationResult a location
+//                                startIntentService(location);
+//                                presenter.showPosition(locationResult);
+//                                Toast.makeText(MainActivity.this, "lastLocation: "+location.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.d("MapDemoActivity", "Error trying to get last GPS location");
+                        e.printStackTrace();
+                    });
+        }
+    }
+
 }
 
 //
 //public class LocalizacionActivity extends FragmentActivity implements OnMapReadyCallback {
 //
-//    private GoogleMap mMap;
+//    private GoogleMap googleMap;
+
 //    ArrayList markerPoints= new ArrayList();
 //
 //    @Override
@@ -157,18 +374,22 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //
 //    @Override
 //    public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
+
+//        googleMap = googleMap;
 //        LatLng sydney = new LatLng(-34, 151);
-//        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
+//        //googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
 //
-//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
 //            @Override
 //            public void onMapClick(LatLng latLng) {
 //
 //                if (markerPoints.size() > 1) {
 //                    markerPoints.clear();
-//                    mMap.clear();
+
+//                    googleMap.clear();
+
 //                }
 //
 //                // Adding new item to the ArrayList
@@ -187,7 +408,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //                }
 //
 //                // Add new marker to the Google Map Android API V2
-//                mMap.addMarker(options);
+
+//                googleMap.addMarker(options);
+
 //
 //                // Checks, whether start and end locations are captured
 //                if (markerPoints.size() >= 2) {
@@ -285,7 +508,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //            }
 //
 //// Drawing polyline in the Google Map for the i-th route
-//            mMap.addPolyline(lineOptions);
+
+//            googleMap.addPolyline(lineOptions);
+
 //        }
 //    }
 //
