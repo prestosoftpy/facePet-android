@@ -9,18 +9,18 @@ import py.com.prestosoftware.facepet.data.remote.FacePetService;
 import py.com.prestosoftware.facepet.domain.repository.PetShopRepository;
 import rx.Observable;
 
-public class PetShopDataRepository implements PetShopRepository {
+public class PetShopDataRepository  implements PetShopRepository {
+
+    private FacePetService service;
 
     @Inject
-    FacePetService service;
-
-    public  PetShopDataRepository(FacePetService service){
-        this.service= service;
+    public PetShopDataRepository(FacePetService service) {
+        this.service = service;
     }
-
 
     @Override
-    public Observable<List<Empresa>> getempresas() {
+    public Observable<List<Empresa>> getEmpresas() {
         return service.getEmpresas();
     }
+
 }

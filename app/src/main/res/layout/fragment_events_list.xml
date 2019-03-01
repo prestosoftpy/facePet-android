@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <android.support.v7.widget.RecyclerView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/eventsRecyclerView"
+        android:name="py.com.prestosoftware.facepet.ui.Events.EventsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.events.EventsFragment"
+        tools:listitem="@layout/fragment_events" />
+
+
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginRight="16dp"-->
+
+    <include
+        android:id="@+id/progress_indicator"
+        layout="@layout/progress_dialog"/>
+</RelativeLayout>

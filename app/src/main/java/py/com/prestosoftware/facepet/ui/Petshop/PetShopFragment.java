@@ -1,4 +1,4 @@
-package py.com.prestosoftware.facepet.ui.Petshop;
+package py.com.prestosoftware.facepet.ui.petshop;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,42 +12,37 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import py.com.prestosoftware.facepet.FacePetApplication;
 import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Empresa;
+import py.com.prestosoftware.facepet.ui.petshop.dummy.PetShopContract;
 
-import javax.inject.Inject;
-
-/**
- * @author Diego Lusberg
+/***
+ * @author nestorcde
  * @version 0.01
- *
- *
- *
  */
 public class PetShopFragment extends Fragment implements PetShopContract.PetShopView {
+    @BindView(R.id.empresaRecyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.progress_indicator) ProgressBar mProgressBar;
 
-   private static final String TAG= PetShopFragment.class.getSimpleName();
+    @Inject PetShopPresenter presenter;
 
-  @BindView(R.id.empresaRecyclerView) RecyclerView mRecyclerView;
-  @BindView(R.id.progress_indicator) ProgressBar mProgressBar;
+    private static final String TAG = PetShopFragment.class.getSimpleName();
 
-  @Inject PetShopPresenter presenter;
-
-   private static PetShopFragment fragment;
-
+    private static PetShopFragment fragment;
     public PetShopFragment() {
     }
 
-    public static PetShopFragment newInstance() {
-        if (fragment == null) {// para que no instancie cada vez que se carga la pantalla
+    public static PetShopFragment newInstance(){
+        if(fragment==null) {
             fragment = new PetShopFragment();
         }
         return fragment;
     }
-
 
 
     @Override
@@ -55,9 +50,8 @@ public class PetShopFragment extends Fragment implements PetShopContract.PetShop
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_petshop_list, container, false);
 
-        ButterKnife.bind(this, view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-
+        ButterKnife.bind(this,view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
         return view;
     }
 
@@ -68,31 +62,17 @@ public class PetShopFragment extends Fragment implements PetShopContract.PetShop
         presenter.attachView(this);
         presenter.getEmpresas();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         presenter.detachView();
     }
 
-
-
-    /* @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
+    private void setupInjection(){
+        FacePetApplication app = (FacePetApplication) getActivity().getApplication();
+        app.getGraph().inject(this);
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-*/
-
 
     @Override
     public void loadEmpresas(List<Empresa> empresas) {
@@ -112,11 +92,5 @@ public class PetShopFragment extends Fragment implements PetShopContract.PetShop
     @Override
     public void onEntityError(String error) {
         Log.d(TAG,error);
-    }
-
-    private void setupInjection(){
-        FacePetApplication app = (FacePetApplication) getActivity().getApplication();
-        app.getGraph().inject(this);
-
     }
 }

@@ -25,12 +25,14 @@
     <string name="txt_reg_address">Adress</string>
     <string name="txt_reg_apellido">Last Name</string>
     <string name="city_id">City Id</string>
-
-    <string name="txt_Reservarturno">Reserve shift</string>
-    <string name="txt_seleccionfecha">Select the date</string>
-    <string name="elija_su_mascota">Choose your pet</string>
-    <string name="cantidad_mascota">Quantity</string>
-    <string name="servicio_mascota">Service</string>
-    <string name="confirmar_reserva">Confirm</string>
+    <string name="login_ui" translatable="false">Login UI</string>
+    <string name="usuario">User</string>
+    <string name="facepets">Facepets</string>
+    <string name="fecha">Date</string>
+    <string name="descripcion">Description</string>
+    <string name="adoptar">ADOPT</string>
+    <string name="ayudar">HELP</string>
+    <string name="title_activity_localizacion">Localizacion de Mascotas</string>
+    <string name="error_permission_map">No tiene Permisos</string>
 
 </resources>

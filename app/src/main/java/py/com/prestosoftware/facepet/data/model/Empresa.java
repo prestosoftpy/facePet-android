@@ -6,16 +6,19 @@ public class Empresa {
     private int id;
     private String nombre;
     @SerializedName("imagen_url")
-    private String imagen_url;
-
+    private String imagenUrl;
     private String direccion;
 
-
-
-    public Empresa(){
-
+    public String getDireccion() {
+        return direccion;
     }
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Empresa() {
+    }
 
     public int getId() {
         return id;
@@ -33,19 +36,11 @@ public class Empresa {
         this.nombre = nombre;
     }
 
-    public String getImagen_url() {
-        return imagen_url;
+    public String getImagenUrl() {
+        return imagenUrl;
     }
 
-    public void setImagen_url(String imagen_url) {
-        this.imagen_url = imagen_url;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 }

@@ -7,4 +7,7 @@
     <color name="blue">#AAAAAA</color>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
+    <color name="black">#212121</color>
+    <color name="grey">#616161</color>
+    <color name="magoo_user_base_color">#AAAAAA</color>
 </resources>
