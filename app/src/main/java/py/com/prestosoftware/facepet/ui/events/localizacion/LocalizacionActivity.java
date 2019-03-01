@@ -6,10 +6,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Message;
+
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -38,6 +40,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.Task;
+
 //import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -50,6 +53,7 @@ import py.com.prestosoftware.facepet.R;
 import py.com.prestosoftware.facepet.data.model.Evento;
 import py.com.prestosoftware.facepet.helpers.GMapV2Direction;
 import py.com.prestosoftware.facepet.helpers.GMapV2DirectionAsyncTask;
+
 import py.com.prestosoftware.facepet.helpers.MapType;
 import py.com.prestosoftware.facepet.ui.main.MainActivity;
 
@@ -70,6 +74,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 
     String TAG = LocalizacionActivity.class.getSimpleName();
 
+
     public LocalizacionActivity() {
     }
 
@@ -85,6 +90,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
         mapFragment.getMapAsync(this);
 
 
+
         createLocationCallback();
         buildLocationSettingsRequest();
 //        lat = getIntent().getFloatExtra(Util.LATITUD, 0);
@@ -92,7 +98,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //        Log.d(TAG, "Latitud = " + lat + " Longitud = " + lng);
 
 
+
     }
+
 
     private void requestPermissionForLocation() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(LocalizacionActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -113,6 +121,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
         buildLocationSettingsRequest();
     }
 
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -124,6 +133,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         this.googleMap = googleMap;
         this.googleMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
         this.googleMap.getUiSettings().setAllGesturesEnabled(true);//enable gestures
@@ -144,6 +154,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //        LatLng destino = new LatLng(lat, lng);
 //        route(origen, destino, "driving");
 
+
 //        GMapV2DirectionAsyncTask md = new GMapV2DirectionAsyncTask();
 //
 //        Document doc = md.getDocument(origen,destino,"driving");
@@ -155,9 +166,11 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //        for (int i = 0; i < directionPoint.size(); i++) {
 //            rectLine.add(directionPoint.get(i));
 //        }
+
 //        Polyline polylin = googleMap.addPolyline(rectLine);
 
     }
+
 
 
 
@@ -174,7 +187,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
                     for (int i = 0; i < directionPoint.size(); i++) {
                         rectLine.add(directionPoint.get(i));
                     }
+
                     Polyline polylin = googleMap.addPolyline(rectLine);
+
                     md.getDurationText(doc);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -185,6 +200,7 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 
         new GMapV2DirectionAsyncTask(handler, sourcePosition, destPosition, GMapV2Direction.MODE_DRIVING).execute();
     }
+
 
 
     @Override
@@ -336,12 +352,14 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
                     });
         }
     }
+
 }
 
 //
 //public class LocalizacionActivity extends FragmentActivity implements OnMapReadyCallback {
 //
 //    private GoogleMap googleMap;
+
 //    ArrayList markerPoints= new ArrayList();
 //
 //    @Override
@@ -356,18 +374,22 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //
 //    @Override
 //    public void onMapReady(GoogleMap googleMap) {
+
 //        googleMap = googleMap;
 //        LatLng sydney = new LatLng(-34, 151);
 //        //googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
 //
 //        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
 //            @Override
 //            public void onMapClick(LatLng latLng) {
 //
 //                if (markerPoints.size() > 1) {
 //                    markerPoints.clear();
+
 //                    googleMap.clear();
+
 //                }
 //
 //                // Adding new item to the ArrayList
@@ -386,7 +408,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //                }
 //
 //                // Add new marker to the Google Map Android API V2
+
 //                googleMap.addMarker(options);
+
 //
 //                // Checks, whether start and end locations are captured
 //                if (markerPoints.size() >= 2) {
@@ -484,7 +508,9 @@ public class LocalizacionActivity extends FragmentActivity implements OnMapReady
 //            }
 //
 //// Drawing polyline in the Google Map for the i-th route
+
 //            googleMap.addPolyline(lineOptions);
+
 //        }
 //    }
 //
